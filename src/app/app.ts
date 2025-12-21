@@ -10,17 +10,20 @@ import { RouterOutlet } from '@angular/router';
 export class App {
   protected readonly title = signal('cesurpolat.github.io');
 
+  isPixelizationFinished = signal(false);
   pixelSize = signal(16);
-  radius = computed(() => Math.max(0, this.pixelSize() % 2 === 0 ? this.pixelSize() / 2 : (this.pixelSize() - 1) / 2));
+  radius = computed(() => this.pixelSize() % 2 === 0 ? this.pixelSize() / 2 : (this.pixelSize() - 1) / 2);
 
-  clicked():void {
+  ngAfterViewInit() {
+    this.pixelization();
+  }
+
+  pixelization(){
     this.pixelSize.set(16);
     var a = setInterval(() => {
-      //console.log(this.pixelSize());
-      console.log(this.radius());
-      
       this.pixelSize.set(this.pixelSize() - 1);
       if (this.pixelSize() <= 1) {
+        this.isPixelizationFinished.set(true);
         clearInterval(a);
       }
     }, 100);
