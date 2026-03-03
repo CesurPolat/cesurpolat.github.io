@@ -1,30 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 0; height: 0;">
-  <defs>
-    <filter id="pixelate" x="0" y="0">
-      <feFlood [attr.x]="radius()" [attr.y]="radius()" height="1" width="1" />
-
-      <feComposite [attr.width]="pixelSize()" [attr.height]="pixelSize()" />
-
-      <feTile result="a" />
-
-      <feComposite in="SourceGraphic" in2="a" operator="in" />
-
-      <feMorphology operator="dilate" [attr.radius]="radius()" />
-    </filter>
-  </defs>
-</svg>
-
-
-<div [style.filter]="!isPixelizationFinished() ? 'url(#pixelate)' : null">
-
-  <div class="w-screen h-screen bg-center bg-cover"
-    style="background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2FzeqvAWp.jpg&f=1&nofb=1&ipt=474be3a310e4bdafd4ebed92827dfa856f9f2be2509b884f5ff79f72f698239f')">
-
-    <div class="container">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse adipisci error sequi dolores praesentium natus
-      assumenda, nemo dolor reiciendis unde inventore ex eos nesciunt, minima quibusdam nisi facere aliquid labore.
+<div #container class="layout-container flex flex-col">
+  <!-- Masaüstünde yan yana, mobilde alt alta iki ayrı section gibi davranır -->
+  <div class="section-wrapper section-1-wrapper">
+    <div class="section section-1-left">
+      <app-left-content></app-left-content>
     </div>
-
+    <div class="section section-1-right">
+      <app-right-content class="w-full h-full"></app-right-content>
+    </div>
   </div>
 
+  <!-- Diğer section'lar tam sayfa -->
+  <div class="section section-2 border-b-4 border-black bg-white overflow-hidden">
+    <app-skills class="w-full h-full flex items-center justify-center"></app-skills>
+  </div>
+  
+  <div class="section section-3 border-b-4 border-black bg-white">
+    <app-contact class="w-full h-full flex items-center justify-center"></app-contact>
+  </div>
 </div>
+
+<router-outlet></router-outlet>
