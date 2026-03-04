@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { GlassWrapperComponent } from '../../../shared/glass-wrapper';
+import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
 
 @Component({
-  selector: 'app-right-content',
+  selector: 'app-bio-content',
   standalone: true,
   imports: [GlassWrapperComponent],
   template: `
@@ -88,7 +88,7 @@ import { GlassWrapperComponent } from '../../../shared/glass-wrapper';
         </div>
 
         <!-- Footer Quote -->
-        <p class="text-[10px] italic text-white/30 text-center mt-10">
+        <p class="text-[10px] italic text-white/70 text-center mt-10">
           "Code is the architecture of thought; to optimize is to honor the elegance of logic."
         </p>
       </app-glass-wrapper>
@@ -116,4 +116,4 @@ import { GlassWrapperComponent } from '../../../shared/glass-wrapper';
     }
   `]
 })
-export class RightContentComponent {}
+export class BioContentComponent {}
