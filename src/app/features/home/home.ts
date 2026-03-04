@@ -37,7 +37,7 @@ export class HomeComponent implements AfterViewInit {
       });
 
       // Diğer dikey section'lar (Yetenekler, İletişim)
-      const otherSections = gsap.utils.toArray('.section').filter((s: any) => 
+      const otherSections = gsap.utils.toArray('.section').filter((s: any) =>
         !s.classList.contains('section-1-left') && !s.classList.contains('section-1-right')
       );
 
@@ -75,8 +75,20 @@ export class HomeComponent implements AfterViewInit {
           trigger: rightSection,
           start: "center bottom",
           end: "top top",
-          onEnter: () => gsap.to(leftSection, { opacity: 0, duration: 0.15, ease: "power2.inOut" }),
-          onLeaveBack: () => gsap.to(leftSection, { opacity: 1, duration: 0.15, ease: "power2.inOut" })
+          onEnter: () => gsap.to(leftSection, {
+            opacity: 0,
+            z: 0.1,             // Tiny Z-translation forces hardware acceleration
+            force3D: true,
+            duration: 0.15,
+            ease: "power2.inOut"
+          }),
+          onLeaveBack: () => gsap.to(leftSection, {
+            opacity: 1,
+            z: 0,
+            force3D: true,
+            duration: 0.15,
+            ease: "power2.inOut"
+          })
         });
       }
     });
