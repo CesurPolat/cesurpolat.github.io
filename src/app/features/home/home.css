@@ -1,0 +1,80 @@
+/* Modern GSAP Layout Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.layout-container {
+    width: 100%;
+    position: relative;
+}
+
+.section {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.section-1-wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2FzeqvAWp.jpg&f=1&nofb=1&ipt=474be3a310e4bdafd4ebed92827dfa856f9f2be2509b884f5ff79f72f698239f');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.section-1-left {
+    width: 20%;
+    padding: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.section-1-right {
+    width: 50%;
+    padding: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Mobil Düzenleme (768px ve altı) */
+@media (max-width: 768px) {
+
+    /* Section 1 Yapısı */
+    .section-1-wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .section-1-left,
+    .section-1-right {
+        width: 100%;
+    }
+
+    /* Genel Layout Yapısı */
+    .layout-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .right-content-scroll {
+        width: 100%;
+    }
+}
