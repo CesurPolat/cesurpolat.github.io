@@ -91,7 +91,7 @@ import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
           </div>
 
           <!-- Section 3: Footer Quote -->
-          <footer class="pt-6 border-t border-white/10">
+          <footer class="pt-6 pb-4 md:pb-0 border-t border-white/10">
             <p class="text-sm italic text-white/90 text-center">
               "Code is the architecture of thought; to optimize is to honor the elegance of logic."
             </p>
