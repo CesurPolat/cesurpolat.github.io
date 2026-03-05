@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FontRotationWrapperComponent } from "../../../shared/font-rotation-wrapper";
 
 @Component({
   selector: 'app-contact',
@@ -12,8 +13,9 @@ import { Component } from '@angular/core';
         <a href="https://github.com" class="hover:underline decoration-8 decoration-black">GitHub</a>
         <a href="https://twitter.com" class="hover:underline decoration-8 decoration-black">Twitter</a>
       </div>
-      <div class="mt-24 text-sm font-bold opacity-50 uppercase">© 2026 Cesur Polat</div>
+      <div class="mt-24 text-sm font-bold opacity-50 uppercase">© 2026 <app-font-rotation-wrapper [enableTextAnimation]="true">Cesur Polat</app-font-rotation-wrapper></div>
     </div>
-  `
+  `,
+  imports: [FontRotationWrapperComponent]
 })
 export class ContactComponent {}
