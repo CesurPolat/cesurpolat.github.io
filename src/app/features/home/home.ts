@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { BioContentComponent } from './components/bio-content/bio-content.component';
 import { SkillsComponent } from './components/skills';
 import { ContactComponent } from './components/contact';
+import { WorkComponent } from './components/work/work';
+import { EducationComponent } from './components/education/education';
+import { ProjectsComponent } from './components/projects/projects';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ProfileCardComponent } from './components/profile-card/profile-card';
@@ -12,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ProfileCardComponent, BioContentComponent, SkillsComponent, ContactComponent],
+  imports: [CommonModule, ProfileCardComponent, BioContentComponent, SkillsComponent, ContactComponent, WorkComponent, EducationComponent, ProjectsComponent],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
