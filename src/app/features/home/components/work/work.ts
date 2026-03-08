@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div #container class="p-8 w-full max-w-4xl h-full overflow-y-auto flex flex-col">
+    <div #container class="p-8 w-full max-w-6xl h-full overflow-y-auto overflow-x-hidden flex flex-col">
       <h2 class="text-4xl font-black mb-16 border-b-4 border-black inline-block uppercase self-start">Deneyim</h2>
       
       <!-- Timeline Container -->
@@ -19,24 +19,22 @@ import { CommonModule } from '@angular/common';
             @for (exp of experiences; track exp.title; let i = $index; let last = $last) {
               <div class="relative group p-6 md:p-12 flex flex-col">
 
-              <p class="text-red-500">{{ i }}</p>
-              
               <!-- Snake Path (Dynamic Grid Logic) -->
               <div class="absolute inset-0 pointer-events-none">
                 <!-- Horizontal Lines -->
-                <div class="absolute top-0 left-0 right-0 h-1.5 bg-black">1 - {{ i }}</div>
                 @if (shouldShowTopHorizontal(i)) {
+                  <div class="absolute top-0 left-0 right-0 h-1.5 bg-black"></div>
                 }
-                @if (shouldShowBottomHorizontal(i, last)) {
-                   <div class="absolute bottom-0 left-0 right-0 h-1.5 bg-black">2 - {{ i }}</div>
+                @if (shouldShowBottomHorizontal(i)) {
+                   <div class="absolute bottom-0 left-0 right-0 h-1.5 bg-black"></div>
                 }
 
                 <!-- Vertical Connectors -->
-                @if (shouldShowRightVertical(i, last)) {
-                  <div class="absolute top-0 bottom-0 right-0 w-1.5 bg-black">3 - {{ i }}</div>
+                @if (shouldShowRightVertical(i)) {
+                  <div class="absolute top-0 bottom-0 right-0 w-1.5 bg-black"></div>
                 }
-                @if (shouldShowLeftVertical(i, last)) {
-                  <div class="absolute top-0 bottom-0 left-0 w-1.5 bg-black">4 - {{ i }}</div>
+                @if (shouldShowLeftVertical(i)) {
+                  <div class="absolute top-0 bottom-0 left-0 w-1.5 bg-black"></div>
                 }
               </div>
 
@@ -88,6 +86,21 @@ export class WorkComponent implements AfterViewInit {
   private calculateCols() {
     if (this.container) {
       const width = this.container.nativeElement.offsetWidth;
+      // If mobile width (< 640px typically for md: prefix), force 1 column
+      if (window.innerWidth < 640) {
+        this.cols.set(1);
+        return;
+      }
+
+      // If there is an odd number of items, use 3 columns on desktop if possible
+      if (this.experiences.length % 2 !== 0 && window.innerWidth >= 1024) {
+        this.cols.set(3);
+        return;
+      } else if (this.experiences.length % 2 === 0 && window.innerWidth >= 1024) {
+        this.cols.set(2);
+        return;
+      }
+
       // Limit grid for better snake visual
       this.cols.set(Math.min(Math.max(1, Math.floor(width / this.minCardWidth)), 3));
     }
@@ -99,28 +112,29 @@ export class WorkComponent implements AfterViewInit {
 
   // Dynamic Snake Logic
   shouldShowTopHorizontal(i: number): boolean {
-    const row = this.getRow(i);
-    return row % 2 === 0; // Even rows go Right
+    return this.getRow(i) === 0; // Her kutunun üstünde çizgi olsun
   }
 
-  shouldShowBottomHorizontal(i: number, last: boolean): boolean {
+  shouldShowBottomHorizontal(i: number): boolean {
     const row = this.getRow(i);
     const totalRows = Math.ceil(this.experiences.length / this.cols());
     const isLastRow = row === totalRows - 1;
-    return isLastRow; // Odd rows go Left
+    const hasNextItemBelow = i + this.cols() < this.experiences.length;
+    return true; // Her kutunun altında çizgi olsun
+    //return isLastRow || !hasNextItemBelow;
   }
 
-  shouldShowRightVertical(i: number, last: boolean): boolean {
+  shouldShowRightVertical(i: number): boolean {
     const c = this.cols();
     const row = this.getRow(i);
     const isAtRightEdge = (i + 1) % c === 0;
-    return !last && row % 2 === 0 && isAtRightEdge;
+    return row % 2 === 0 && isAtRightEdge;
   }
 
-  shouldShowLeftVertical(i: number, last: boolean): boolean {
+  shouldShowLeftVertical(i: number): boolean {
     const c = this.cols();
     const row = this.getRow(i);
     const isAtLeftEdge = i % c === 0;
-    return !last && row % 2 !== 0 && isAtLeftEdge;
+    return row % 2 !== 0 && isAtLeftEdge;
   }
 }
