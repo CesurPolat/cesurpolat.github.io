@@ -50,7 +50,12 @@ import { CommonModule } from '@angular/common';
               <div class="relative border-4 border-black p-6 md:p-8 bg-white transition-all duration-300 z-10 flex-1 flex flex-col shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-none group-hover:translate-x-2 group-hover:translate-y-2 group-hover:bg-black group-hover:text-white mt-4 md:mt-0">
                 <h3 class="font-black text-lg md:text-xl mb-3 uppercase tracking-tighter">{{ exp.title }}</h3>
                 <div class="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 mb-4 text-xs md:text-sm font-bold opacity-80 uppercase italic">
-                  <span>{{ exp.company }}</span>
+                  <div class="flex items-center gap-1">
+                    <span>{{ exp.company }}</span>
+                    <a *ngIf="exp.link" [href]="exp.link" target="_blank" class="hover:text-blue-500 transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                  </div>
                   <span class="hidden md:block w-1 h-1 bg-current rounded-full"></span>
                   <span>{{ exp.period }}</span>
                 </div>
@@ -68,10 +73,34 @@ export class WorkComponent implements AfterViewInit {
   @ViewChild('container') container!: ElementRef;
   
   experiences = [
-    { title: 'Senior Frontend', company: 'Tech Company', period: '2023 - Present', description: 'Leading frontend development and architecture decisions' },
-    { title: 'Full Stack Developer', company: 'Digital Agency', period: '2021 - 2023', description: 'Building responsive web applications with Angular and Node.js' },
-    { title: 'Junior Developer', company: 'Startup', period: '2020 - 2021', description: 'Developing web applications and learning modern technologies' },
-    { title: 'Intern', company: 'Software House', period: '2019 - 2020', description: 'Learned modern web technologies and assisted on projects' }
+    { 
+      title: 'Full-Stack Developer (Full-time)', 
+      company: 'Primeware Software Solutions', 
+      link: 'https://primeware.com.tr',
+      period: 'Jul 2024 - Mar 2025 • 9 mos', 
+      description: 'Led code refactoring and optimization on the Termoware platform using ASP.NET. Developed calculation services for HVAC systems, reducing processing time by 90%. Migrated systems to gRPC microservices and managed infrastructure on Cloudflare and IIS.' 
+    },
+    { 
+      title: 'Full-Stack Developer (Internship)', 
+      company: 'Primeware Software Solutions', 
+      link: 'https://primeware.com.tr',
+      period: 'Jan 2024 - Jun 2024 • 6 mos', 
+      description: 'Built a multi-tenant identity authentication system using .NET and MSSQL. Designed a multi-tenant storage service with file compression and JWT access control using Angular and .NET.' 
+    },
+    { 
+      title: 'IT Technician (Internship)', 
+      company: 'TÜRASAŞ', 
+      link: 'https://www.turasas.gov.tr',
+      period: 'Aug 2023 - Sep 2023 • 2 mos', 
+      description: 'Installed and maintained computer systems, Windows setup, image recovery, and configured network equipment for reliable connectivity.' 
+    },
+    { 
+      title: 'Angular Developer (Internship)', 
+      company: 'Digisoft Software', 
+      link: 'https://digisoft.com.tr',
+      period: 'Jul 2021 - Sep 2021 • 3 mos', 
+      description: 'Developed CRM forms and page layouts using Angular. Implemented a real-time notification system using Firebase Cloud Messaging (FCM).' 
+    }
   ];
 
   cols = signal(1);
