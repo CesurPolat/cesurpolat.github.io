@@ -7,7 +7,10 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <div #container class="p-8 w-full max-w-6xl h-full overflow-y-auto overflow-x-hidden flex flex-col">
-      <h2 class="text-4xl font-black mb-16 border-b-4 border-black inline-block uppercase self-start">Deneyim</h2>
+      <div class="flex items-center gap-4 mb-16 border-b-4 border-black self-start">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        <h2 class="text-4xl font-black uppercase">Experience</h2>
+      </div>
       
       <!-- Timeline Container -->
       <div class="relative px-4">

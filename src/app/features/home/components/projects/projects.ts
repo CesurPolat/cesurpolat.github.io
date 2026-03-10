@@ -8,7 +8,10 @@ import { FontRotationWrapperComponent } from '../../../../shared/font-rotation-w
   imports: [CommonModule, FontRotationWrapperComponent],
   template: `
     <div class="p-8 w-full max-w-4xl h-full overflow-y-auto flex flex-col">
-      <h2 class="text-4xl font-black mb-8 border-b-4 border-black inline-block uppercase">Projeler</h2>
+      <div class="flex items-center gap-4 mb-8 border-b-4 border-black self-start">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        <h2 class="text-4xl font-black uppercase">Projects</h2>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div *ngFor="let project of projects" class="border-4 border-black p-6 hover:bg-black hover:text-white transition-colors duration-300">
           <h3 class="font-bold text-lg mb-2 uppercase">{{ project.name }}</h3>
