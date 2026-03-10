@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FontRotationWrapperComponent } from '../../../../shared/font-rotation-wrapper';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FontRotationWrapperComponent],
   template: `
     <div class="p-8 w-full max-w-4xl h-full overflow-y-auto flex flex-col">
       <h2 class="text-4xl font-black mb-8 border-b-4 border-black inline-block uppercase">Projeler</h2>
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
           </div>
         </div>
       </div>
+      <div class="mt-24 text-sm font-bold opacity-50 uppercase text-center">© 2026 <app-font-rotation-wrapper [enableTextAnimation]="true">Cesur Polat</app-font-rotation-wrapper></div>
     </div>
   `
 })
