@@ -16,6 +16,18 @@ body {
 .layout-container {
     width: 100%;
     position: relative;
+    isolation: isolate;
+}
+
+.layout-container::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2FzeqvAWp.jpg&f=1&nofb=1&ipt=474be3a310e4bdafd4ebed92827dfa856f9f2be2509b884f5ff79f72f698239f');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .section {
@@ -33,9 +45,7 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2FzeqvAWp.jpg&f=1&nofb=1&ipt=474be3a310e4bdafd4ebed92827dfa856f9f2be2509b884f5ff79f72f698239f');
-    background-size: cover;
-    background-position: center;
+    background: transparent;
     position: relative;
 }
 
@@ -52,6 +62,12 @@ body {
     padding: 0.5rem;
     position: relative;
     overflow: hidden;
+}
+
+.section-2,
+.section-3,
+.section-4 {
+    background: transparent;
 }
 
 /* Mobil Düzenleme (768px ve altı) */

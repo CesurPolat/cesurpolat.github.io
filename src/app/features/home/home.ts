@@ -27,75 +27,73 @@ export class HomeComponent implements AfterViewInit {
   private initGSAP() {
     const mm = gsap.matchMedia();
 
-    mm.add("(min-width: 769px)", () => {
-      // MASAÜSTÜ: İlk bölümü (wrapper) sabitleyip içindeki iki sütunu yan yana görelim
-      ScrollTrigger.create({
-        trigger: ".section-1-wrapper",
-        start: "top top",
-        pin: true,
-        pinSpacing: false,
-        snap: 1
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+    const leftSection = document.querySelector('.section-1-left');
+    const rightSection = document.querySelector('.section-1-right');
+
+    const getSnapSections = () => {
+      const baseSections = window.innerWidth <= 768
+        ? gsap.utils.toArray<HTMLElement>('.section')
+        : gsap.utils.toArray<HTMLElement>([
+            '.section-1-wrapper',
+            '.section-2',
+            '.section-3',
+            '.section-4'
+          ].join(', '));
+
+      return baseSections.sort((a, b) => a.offsetTop - b.offsetTop);
+    };
+
+    const getSnapPoints = () => {
+      const maxScroll = ScrollTrigger.maxScroll(window);
+      if (maxScroll <= 0) return [0];
+
+      const sections = getSnapSections();
+      if (!sections.length) return [0];
+
+      return sections.map((section) => {
+        const centerAlignedScroll = section.offsetTop + (section.offsetHeight / 2) - (window.innerHeight / 2);
+        const clamped = gsap.utils.clamp(0, maxScroll, centerAlignedScroll);
+        return clamped / maxScroll;
       });
+    };
 
-      // Diğer dikey section'lar (Yetenekler, İletişim)
-      const otherSections = gsap.utils.toArray('.section').filter((s: any) =>
-        !s.classList.contains('section-1-left') && !s.classList.contains('section-1-right')
-      );
-
-      otherSections.forEach((section: any) => {
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top top",
-          pin: true,
-          pinSpacing: false,
-          snap: 1
-        });
-      });
-    });
-
-    mm.add("(max-width: 768px)", () => {
-      // MOBİL: Tüm bölümler (Sol, Sağ, Yetenekler, İletişim) ardışık olarak pinlenir
-      const allMobileSections = gsap.utils.toArray('.section');
-
-      allMobileSections.forEach((section: any) => {
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top top",
-          pin: true,
-          pinSpacing: false,
-          snap: 1
-        });
-      });
-
-      // Sol komponenti sağ komponent göründüğünde gizle
-      const leftSection = document.querySelector('.section-1-left');
-      const rightSection = document.querySelector('.section-1-right');
-
-      if (leftSection && rightSection) {
-        ScrollTrigger.create({
-          trigger: rightSection,
-          start: "center bottom",
-          end: "top top",
-          onEnter: () => gsap.to(leftSection, {
-            opacity: 0,
-            z: 0.1,             // Tiny Z-translation forces hardware acceleration
-            force3D: true,
-            duration: 0.15,
-            ease: "power2.inOut"
-          }),
-          onLeaveBack: () => gsap.to(leftSection, {
-            opacity: 1,
-            z: 0,
-            force3D: true,
-            duration: 0.15,
-            ease: "power2.inOut"
-          })
-        });
+    ScrollTrigger.create({
+      trigger: this.container.nativeElement,
+      start: 'top top',
+      end: 'bottom bottom',
+      invalidateOnRefresh: true,
+      snap: {
+        snapTo: (progress: number, self: any) => {
+          const points = getSnapPoints();
+          const directionalSnap = ScrollTrigger.snapDirectional(points);
+          return directionalSnap(progress, self?.direction || 1);
+        },
+        directional: true,
+        duration: { min: 0.12, max: 0.3 },
+        ease: 'power2.inOut'
       }
     });
 
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
+    mm.add('(max-width: 768px)', () => {
+      if (!leftSection || !rightSection) return;
+
+      gsap.set(leftSection, { autoAlpha: 1 });
+
+      gsap.to(leftSection, {
+        autoAlpha: 0,
+        ease: 'none',
+        overwrite: 'auto',
+        scrollTrigger: {
+          trigger: rightSection,
+          start: 'top 80%',
+          end: 'top 35%',
+          scrub: true
+        }
+      });
+    });
+
+    ScrollTrigger.refresh();
   }
 }
