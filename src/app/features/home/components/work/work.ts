@@ -7,18 +7,18 @@ import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
   standalone: true,
   imports: [CommonModule, GlassWrapperComponent],
   template: `
-    <app-glass-wrapper panelClass="h-[67vh] bg-transparent backdrop-blur-[25px] p-5 lg:p-8 rounded-2xl border border-white/10 shadow-2xl overflow-hidden max-h-[85vh] w-full max-w-6xl">
+    <app-glass-wrapper panelClass="h-[67vh] bg-transparent backdrop-blur-[25px] p-4 lg:p-5 rounded-2xl border border-white/10 shadow-2xl overflow-hidden max-h-[85vh] w-full max-w-none">
       <div #container class="w-full h-full overflow-y-auto overflow-x-hidden custom-scrollbar flex flex-col pr-1 md:pr-2 text-white">
-        <div class="flex items-center gap-4 mb-10 md:mb-12 border-b border-white/20 pb-3 self-start text-white/95">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-          <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Experience</h2>
+        <div class="flex items-center gap-3 mb-6 md:mb-7 border-b border-white/20 pb-2 self-start text-white/95">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight">Experience</h2>
         </div>
 
-        <div class="relative px-1 md:px-3">
+        <div class="relative px-1 md:px-2.5 flex-1 min-h-0">
           <div class="relative">
-            <div class="grid gap-0 relative" [style.grid-template-columns]="'repeat(' + cols() + ', 1fr)'">
+            <div class="grid gap-0 relative h-full auto-rows-fr" [style.grid-template-columns]="'repeat(' + cols() + ', 1fr)'">
               @for (exp of experiences; track exp.title; let i = $index; let last = $last) {
-                <div class="relative group p-4 md:p-8 flex flex-col">
+                <div class="relative group p-3 md:p-4 flex flex-col h-full">
                   <div class="absolute inset-0 pointer-events-none">
                     @if (shouldShowTopHorizontal(i)) {
                       <div class="absolute top-0 left-0 right-0 h-px bg-white/20"></div>
@@ -39,9 +39,9 @@ import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
                     <span class="absolute top-6 right-5 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full transition-colors duration-300 group-hover:bg-white/20 z-20">Current</span>
                   }
 
-                  <div class="relative border border-white/15 p-5 md:p-7 bg-white/5 transition-all duration-300 z-10 flex-1 flex flex-col rounded-xl shadow-xl hover:bg-white/10 hover:border-white/25 mt-3 md:mt-0">
-                    <h3 class="font-black text-base md:text-lg mb-3 uppercase tracking-tight text-white">{{ exp.title }}</h3>
-                    <div class="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 mb-4 text-xs md:text-sm font-semibold text-white/80 uppercase italic">
+                  <div class="relative border border-white/15 p-3.5 md:p-5 bg-white/5 transition-all duration-300 z-10 flex-1 flex flex-col rounded-xl shadow-xl hover:bg-white/10 hover:border-white/25 mt-2 md:mt-0">
+                    <h3 class="font-black text-base md:text-lg mb-2 uppercase tracking-tight text-white">{{ exp.title }}</h3>
+                    <div class="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 mb-3 text-xs md:text-sm font-semibold text-white/80 uppercase italic">
                       <div class="flex items-center gap-1">
                         <span>{{ exp.company }}</span>
                         <a *ngIf="exp.link" [href]="exp.link" target="_blank" class="text-white/80 hover:text-blue-300 transition-colors">
@@ -51,7 +51,7 @@ import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
                       <span class="hidden md:block w-1 h-1 bg-white/40 rounded-full"></span>
                       <span>{{ exp.period }}</span>
                     </div>
-                    <p class="text-xs md:text-sm leading-relaxed font-medium text-white/85 flex-1">{{ exp.description }}</p>
+                    <p class="text-xs md:text-sm leading-relaxed font-medium text-white/85 flex-1 line-clamp-5 md:line-clamp-none">{{ exp.description }}</p>
                   </div>
                 </div>
             }

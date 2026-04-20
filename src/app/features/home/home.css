@@ -17,6 +17,7 @@ body {
     width: 100%;
     position: relative;
     isolation: isolate;
+    --primary-content-width: 70%;
 }
 
 .layout-container::before {
@@ -68,6 +69,25 @@ body {
 .section-3,
 .section-4 {
     background: transparent;
+    align-items: center;
+}
+
+.section-content {
+    width: var(--primary-content-width);
+    max-width: var(--primary-content-width);
+    flex: 0 0 var(--primary-content-width);
+    height: auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-content > app-work,
+.section-content > app-education,
+.section-content > app-projects {
+    width: 100%;
+    display: block;
 }
 
 /* Mobil Düzenleme (768px ve altı) */
@@ -82,6 +102,12 @@ body {
     .section-1-left,
     .section-1-right {
         width: 100%;
+    }
+
+    .section-content {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
     }
 
     /* Genel Layout Yapısı */

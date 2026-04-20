@@ -53,9 +53,18 @@ export class HomeComponent implements AfterViewInit {
       if (!sections.length) return [0];
 
       return sections.map((section) => {
-        const centerAlignedScroll = section.offsetTop + (section.offsetHeight / 2) - (window.innerHeight / 2);
-        const clamped = gsap.utils.clamp(0, maxScroll, centerAlignedScroll);
+        const targetScroll = window.innerWidth <= 768
+          ? section.offsetTop
+          : section.offsetTop + (section.offsetHeight / 2) - (window.innerHeight / 2);
+        const clamped = gsap.utils.clamp(0, maxScroll, targetScroll);
         return clamped / maxScroll;
+      });
+    };
+
+    const resetScrollableAreas = (section: HTMLElement) => {
+      const scrollables = section.querySelectorAll<HTMLElement>('.custom-scrollbar, [class*="overflow-y-auto"]');
+      scrollables.forEach((el) => {
+        el.scrollTop = 0;
       });
     };
 
@@ -74,6 +83,15 @@ export class HomeComponent implements AfterViewInit {
         duration: { min: 0.12, max: 0.3 },
         ease: 'power2.inOut'
       }
+    });
+
+    // When user scrolls back up into a section, reset that section's inner scroll areas.
+    getSnapSections().forEach((section) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top top',
+        onEnterBack: () => resetScrollableAreas(section)
+      });
     });
 
     mm.add('(max-width: 768px)', () => {
