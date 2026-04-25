@@ -8,13 +8,22 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ProfileCardComponent } from './components/profile-card/profile-card';
 import { LoadingStateService } from '../../shared/loading-state.service';
+import { NavbarComponent } from './components/navbar/navbar';
 
 gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ProfileCardComponent, BioContentComponent, WorkComponent, EducationComponent, ProjectsComponent],
+  imports: [
+    CommonModule,
+    NavbarComponent,
+    ProfileCardComponent,
+    BioContentComponent,
+    WorkComponent,
+    EducationComponent,
+    ProjectsComponent
+  ],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

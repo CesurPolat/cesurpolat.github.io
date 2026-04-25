@@ -1,0 +1,66 @@
+<nav
+  #navbar
+  class="floating-navbar"
+  aria-label="Section navigation"
+>
+  <span class="active-indicator" aria-hidden="true"></span>
+
+  <button
+    #navButton
+    *ngFor="let item of navItems"
+    type="button"
+    class="nav-button"
+    [attr.data-nav-id]="item.id"
+    [class.is-active]="activeItemId() === item.id"
+    [attr.aria-label]="item.label"
+    [attr.aria-current]="activeItemId() === item.id ? 'page' : null"
+    [title]="item.label"
+    (click)="scrollToSection(item)"
+  >
+    <svg
+      *ngIf="item.icon === 'profile'"
+      class="nav-icon"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <circle cx="12" cy="8" r="3.25" />
+      <path d="M5.75 19.25c.7-3.15 3.05-5.1 6.25-5.1s5.55 1.95 6.25 5.1" />
+    </svg>
+
+    <svg
+      *ngIf="item.icon === 'work'"
+      class="nav-icon"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M8.25 8V6.75A2.25 2.25 0 0 1 10.5 4.5h3A2.25 2.25 0 0 1 15.75 6.75V8" />
+      <rect x="4.5" y="8" width="15" height="11.5" rx="2.25" />
+      <path d="M4.75 12.75h14.5M10 12.75v1.5h4v-1.5" />
+    </svg>
+
+    <svg
+      *ngIf="item.icon === 'education'"
+      class="nav-icon"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M3.75 9.25 12 5l8.25 4.25L12 13.5 3.75 9.25Z" />
+      <path d="M7.25 11.25v4.2c1.35 1.35 2.95 2.05 4.75 2.05s3.4-.7 4.75-2.05v-4.2" />
+      <path d="M20.25 9.25v5.25" />
+    </svg>
+
+    <svg
+      *ngIf="item.icon === 'projects'"
+      class="nav-icon"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M5 6.5h14M5 12h14M5 17.5h14" />
+      <path d="M7.5 4.75v3.5M16.5 10.25v3.5M10.5 15.75v3.5" />
+    </svg>
+  </button>
+</nav>
