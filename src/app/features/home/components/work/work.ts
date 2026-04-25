@@ -1,74 +1,99 @@
-import { Component, ElementRef, HostListener, ViewChild, AfterViewInit, signal, computed } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, AfterViewInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
 
 @Component({
   selector: 'app-work',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, GlassWrapperComponent],
   template: `
-    <div #container class="p-8 w-full max-w-6xl h-full overflow-y-auto overflow-x-hidden flex flex-col">
-      <h2 class="text-4xl font-black mb-16 border-b-4 border-black inline-block uppercase self-start">Deneyim</h2>
-      
-      <!-- Timeline Container -->
-      <div class="relative px-4">
-        
-        <!-- Experiences Content -->
-        <div class="relative">
-          <!-- Common Experience Grid/List -->
-          <div class="grid gap-0 relative" [style.grid-template-columns]="'repeat(' + cols() + ', 1fr)'">
-            @for (exp of experiences; track exp.title; let i = $index; let last = $last) {
-              <div class="relative group p-6 md:p-12 flex flex-col">
+    <app-glass-wrapper panelClass="h-[67vh] bg-transparent backdrop-blur-[25px] p-4 lg:p-5 rounded-2xl border border-white/10 shadow-2xl overflow-hidden max-h-[85vh] w-full max-w-none">
+      <div #container class="w-full h-full overflow-y-auto overflow-x-hidden custom-scrollbar flex flex-col pr-1 md:pr-2 text-white">
+        <div class="flex items-center gap-3 mb-6 md:mb-7 border-b border-white/20 pb-2 self-start text-white/95">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight">Experience</h2>
+        </div>
 
-              <!-- Snake Path (Dynamic Grid Logic) -->
-              <div class="absolute inset-0 pointer-events-none">
-                <!-- Horizontal Lines -->
-                @if (shouldShowTopHorizontal(i)) {
-                  <div class="absolute top-0 left-0 right-0 h-1.5 bg-black"></div>
-                }
-                @if (shouldShowBottomHorizontal(i)) {
-                   <div class="absolute bottom-0 left-0 right-0 h-1.5 bg-black"></div>
-                }
+        <div class="relative px-1 md:px-2.5 flex-1 min-h-0">
+          <div class="relative">
+            <div class="grid gap-0 relative h-full auto-rows-fr" [style.grid-template-columns]="'repeat(' + cols() + ', 1fr)'">
+              @for (exp of experiences; track exp.title; let i = $index; let last = $last) {
+                <div class="relative group p-3 md:p-4 flex flex-col h-full">
+                  <div class="absolute inset-0 pointer-events-none">
+                    @if (shouldShowTopHorizontal(i)) {
+                      <div class="absolute top-0 left-0 right-0 h-px bg-white/20"></div>
+                    }
+                    @if (shouldShowBottomHorizontal(i)) {
+                      <div class="absolute bottom-0 left-0 right-0 h-px bg-white/20"></div>
+                    }
 
-                <!-- Vertical Connectors -->
-                @if (shouldShowRightVertical(i)) {
-                  <div class="absolute top-0 bottom-0 right-0 w-1.5 bg-black"></div>
-                }
-                @if (shouldShowLeftVertical(i)) {
-                  <div class="absolute top-0 bottom-0 left-0 w-1.5 bg-black"></div>
-                }
-              </div>
+                    @if (shouldShowRightVertical(i)) {
+                      <div class="absolute top-0 bottom-0 right-0 w-px bg-white/20"></div>
+                    }
+                    @if (shouldShowLeftVertical(i)) {
+                      <div class="absolute top-0 bottom-0 left-0 w-px bg-white/20"></div>
+                    }
+                  </div>
 
-              <!-- Current Badge (Only for first item) -->
-              @if (i === 0) {
-                <span class="absolute top-8 right-8 bg-black text-white px-3 py-1 text-xs font-bold uppercase transform rotate-3 transition-transform group-hover:rotate-0 group-hover:bg-white group-hover:text-black z-20">Current</span>
-              }
+                  @if (i === 0) {
+                    <span class="absolute top-6 right-5 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full transition-colors duration-300 group-hover:bg-white/20 z-20">Current</span>
+                  }
 
-              <!-- Experience Card -->
-              <div class="relative border-4 border-black p-6 md:p-8 bg-white transition-all duration-300 z-10 flex-1 flex flex-col shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-none group-hover:translate-x-2 group-hover:translate-y-2 group-hover:bg-black group-hover:text-white mt-4 md:mt-0">
-                <h3 class="font-black text-lg md:text-xl mb-3 uppercase tracking-tighter">{{ exp.title }}</h3>
-                <div class="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 mb-4 text-xs md:text-sm font-bold opacity-80 uppercase italic">
-                  <span>{{ exp.company }}</span>
-                  <span class="hidden md:block w-1 h-1 bg-current rounded-full"></span>
-                  <span>{{ exp.period }}</span>
+                  <div class="relative border border-white/15 p-3.5 md:p-5 bg-white/5 transition-all duration-300 z-10 flex-1 flex flex-col rounded-xl shadow-xl hover:bg-white/10 hover:border-white/25 mt-2 md:mt-0">
+                    <h3 class="font-black text-base md:text-lg mb-2 uppercase tracking-tight text-white">{{ exp.title }}</h3>
+                    <div class="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 mb-3 text-xs md:text-sm font-semibold text-white/80 uppercase italic">
+                      <div class="flex items-center gap-1">
+                        <span>{{ exp.company }}</span>
+                        <a *ngIf="exp.link" [href]="exp.link" target="_blank" class="text-white/80 hover:text-blue-300 transition-colors">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                      </div>
+                      <span class="hidden md:block w-1 h-1 bg-white/40 rounded-full"></span>
+                      <span>{{ exp.period }}</span>
+                    </div>
+                    <p class="text-xs md:text-sm leading-relaxed font-medium text-white/85 flex-1 line-clamp-5 md:line-clamp-none">{{ exp.description }}</p>
+                  </div>
                 </div>
-                <p class="text-xs md:text-sm leading-relaxed font-medium flex-1">{{ exp.description }}</p>
-              </div>
-            </div>
-          }
+            }
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </app-glass-wrapper>
   `
 })
 export class WorkComponent implements AfterViewInit {
   @ViewChild('container') container!: ElementRef;
   
   experiences = [
-    { title: 'Senior Frontend', company: 'Tech Company', period: '2023 - Present', description: 'Leading frontend development and architecture decisions' },
-    { title: 'Full Stack Developer', company: 'Digital Agency', period: '2021 - 2023', description: 'Building responsive web applications with Angular and Node.js' },
-    { title: 'Junior Developer', company: 'Startup', period: '2020 - 2021', description: 'Developing web applications and learning modern technologies' },
-    { title: 'Intern', company: 'Software House', period: '2019 - 2020', description: 'Learned modern web technologies and assisted on projects' }
+    { 
+      title: 'Full-Stack Developer (Full-time)', 
+      company: 'Primeware Software Solutions', 
+      link: 'https://primeware.com.tr',
+      period: 'Jul 2024 - Mar 2025 • 9 mos', 
+      description: 'Led code refactoring and optimization on the Termoware platform using ASP.NET. Developed calculation services for HVAC systems, reducing processing time by 90%. Migrated systems to gRPC microservices and managed infrastructure on Cloudflare and IIS.' 
+    },
+    { 
+      title: 'Full-Stack Developer (Internship)', 
+      company: 'Primeware Software Solutions', 
+      link: 'https://primeware.com.tr',
+      period: 'Jan 2024 - Jun 2024 • 6 mos', 
+      description: 'Built a multi-tenant identity authentication system using .NET and MSSQL. Designed a multi-tenant storage service with file compression and JWT access control using Angular and .NET.' 
+    },
+    { 
+      title: 'IT Technician (Internship)', 
+      company: 'TÜRASAŞ', 
+      link: 'https://www.turasas.gov.tr',
+      period: 'Aug 2023 - Sep 2023 • 2 mos', 
+      description: 'Installed and maintained computer systems, Windows setup, image recovery, and configured network equipment for reliable connectivity.' 
+    },
+    { 
+      title: 'Angular Developer (Internship)', 
+      company: 'Digisoft Software', 
+      link: 'https://digisoft.com.tr',
+      period: 'Jul 2021 - Sep 2021 • 3 mos', 
+      description: 'Developed CRM forms and page layouts using Angular. Implemented a real-time notification system using Firebase Cloud Messaging (FCM).' 
+    }
   ];
 
   cols = signal(1);

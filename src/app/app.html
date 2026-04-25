@@ -1,1 +1,5 @@
 <router-outlet></router-outlet>
+
+@if (isOverlayVisible()) {
+	<app-loading-overlay [isExiting]="isOverlayExiting()"></app-loading-overlay>
+}

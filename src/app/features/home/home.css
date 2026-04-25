@@ -16,6 +16,19 @@ body {
 .layout-container {
     width: 100%;
     position: relative;
+    isolation: isolate;
+    --primary-content-width: 70%;
+}
+
+.layout-container::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2FzeqvAWp.jpg&f=1&nofb=1&ipt=474be3a310e4bdafd4ebed92827dfa856f9f2be2509b884f5ff79f72f698239f');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .section {
@@ -33,10 +46,123 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2FzeqvAWp.jpg&f=1&nofb=1&ipt=474be3a310e4bdafd4ebed92827dfa856f9f2be2509b884f5ff79f72f698239f');
-    background-size: cover;
-    background-position: center;
+    background: transparent;
     position: relative;
+}
+
+.scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    pointer-events: none;
+    z-index: 4;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 300ms ease, visibility 300ms ease;
+}
+
+.scroll-hint.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.scroll-hint-icon {
+    width: 28px;
+    height: 48px;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    border-radius: 20px;
+    position: relative;
+    backdrop-filter: blur(4px);
+}
+
+.scroll-hint-icon span {
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    width: 5px;
+    height: 11px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(-50%);
+    animation: hint-scroll-dot 1.5s ease-in-out infinite;
+}
+
+.scroll-hint-icon-mobile {
+    display: none;
+    position: relative;
+    width: 28px;
+    height: 48px;
+}
+
+.swipe-arrow {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid rgba(255, 255, 255, 0.92);
+    border-left: 2px solid rgba(255, 255, 255, 0.92);
+    transform: translateX(-50%) rotate(45deg);
+    animation: hint-swipe-up 1.2s ease-in-out infinite;
+}
+
+.swipe-arrow::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid rgba(255, 255, 255, 0.74);
+    border-left: 2px solid rgba(255, 255, 255, 0.74);
+}
+
+.scroll-hint-text {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+}
+
+.scroll-hint-mobile {
+    display: none;
+}
+
+@keyframes hint-scroll-dot {
+    0% {
+        opacity: 0.2;
+        transform: translate(-50%, 0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, 10px);
+    }
+    100% {
+        opacity: 0.2;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes hint-swipe-up {
+    0% {
+        opacity: 0.2;
+        transform: translate(-50%, 5px) rotate(45deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -2px) rotate(45deg);
+    }
+    100% {
+        opacity: 0.2;
+        transform: translate(-50%, 5px) rotate(45deg);
+    }
 }
 
 .section-1-left {
@@ -54,6 +180,31 @@ body {
     overflow: hidden;
 }
 
+.section-2,
+.section-3,
+.section-4 {
+    background: transparent;
+    align-items: center;
+}
+
+.section-content {
+    width: var(--primary-content-width);
+    max-width: var(--primary-content-width);
+    flex: 0 0 var(--primary-content-width);
+    height: auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-content > app-work,
+.section-content > app-education,
+.section-content > app-projects {
+    width: 100%;
+    display: block;
+}
+
 /* Mobil Düzenleme (768px ve altı) */
 @media (max-width: 768px) {
 
@@ -63,9 +214,46 @@ body {
         height: auto;
     }
 
+    .scroll-hint {
+        position: fixed;
+        left: 50%;
+        bottom: max(0.75rem, env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        z-index: 30;
+    }
+
+    .scroll-hint-icon {
+        width: 24px;
+        height: 40px;
+    }
+
+    .scroll-hint-icon-desktop {
+        display: none;
+    }
+
+    .scroll-hint-icon-mobile {
+        display: block;
+        width: 24px;
+        height: 42px;
+    }
+
+    .scroll-hint-desktop {
+        display: none;
+    }
+
+    .scroll-hint-mobile {
+        display: block;
+    }
+
     .section-1-left,
     .section-1-right {
         width: 100%;
+    }
+
+    .section-content {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
     }
 
     /* Genel Layout Yapısı */

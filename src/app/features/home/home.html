@@ -1,32 +1,44 @@
+<app-navbar></app-navbar>
+
 <div #container class="layout-container flex flex-col">
   <!-- Masaüstünde yan yana, mobilde alt alta iki ayrı section gibi davranır -->
-  <div class="section-wrapper section-1-wrapper">
-    <div class="section section-1-left">
+  <div id="profile-section" class="section-wrapper section-1-wrapper">
+    <div class="section section-1-left" data-nav-id="profile">
       <app-profile-card></app-profile-card>
     </div>
-    <div class="section section-1-right">
+    <div class="section section-1-right" data-nav-id="profile">
       <app-bio-content class="w-full h-full"></app-bio-content>
+    </div>
+
+    <div class="scroll-hint" [class.is-hidden]="!showScrollHint()" aria-hidden="true">
+      <div class="scroll-hint-icon scroll-hint-icon-desktop">
+        <span></span>
+      </div>
+      <div class="scroll-hint-icon-mobile">
+        <span class="swipe-arrow"></span>
+      </div>
+      <p class="scroll-hint-text scroll-hint-desktop">Scroll Down</p>
+      <p class="scroll-hint-text scroll-hint-mobile">Swipe Up</p>
     </div>
   </div>
 
   <!-- Diğer section'lar tam sayfa -->
-  <div class="section section-2 border-b-4 border-black bg-white overflow-hidden">
-    <app-work class="w-full h-full flex items-center justify-center"></app-work>
+  <div id="work-section" class="section section-2 overflow-hidden" data-nav-id="work">
+    <div class="section-content">
+      <app-work class="w-full"></app-work>
+    </div>
   </div>
 
-  <div class="section section-3 border-b-4 border-black bg-white overflow-hidden">
-    <app-education class="w-full h-full flex items-center justify-center"></app-education>
+  <div id="education-section" class="section section-3 overflow-hidden" data-nav-id="education">
+    <div class="section-content">
+      <app-education class="w-full"></app-education>
+    </div>
   </div>
 
-  <div class="section section-4 border-b-4 border-black bg-white overflow-hidden">
-    <app-projects class="w-full h-full flex items-center justify-center"></app-projects>
+  <div id="projects-section" class="section section-4 overflow-hidden" data-nav-id="projects">
+    <div class="section-content">
+      <app-projects class="w-full"></app-projects>
+    </div>
   </div>
-  
-  <div class="section section-5 border-b-4 border-black bg-white">
-    <app-skills class="w-full h-full flex items-center justify-center"></app-skills>
-  </div>
-  
-  <div class="section section-6 border-b-4 border-black bg-white">
-    <app-contact class="w-full h-full flex items-center justify-center"></app-contact>
-  </div>
+ 
 </div>
