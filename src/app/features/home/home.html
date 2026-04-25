@@ -9,6 +9,17 @@
     <div class="section section-1-right" data-nav-id="profile">
       <app-bio-content class="w-full h-full"></app-bio-content>
     </div>
+
+    <div class="scroll-hint" [class.is-hidden]="!showScrollHint()" aria-hidden="true">
+      <div class="scroll-hint-icon scroll-hint-icon-desktop">
+        <span></span>
+      </div>
+      <div class="scroll-hint-icon-mobile">
+        <span class="swipe-arrow"></span>
+      </div>
+      <p class="scroll-hint-text scroll-hint-desktop">Scroll Down</p>
+      <p class="scroll-hint-text scroll-hint-mobile">Swipe Up</p>
+    </div>
   </div>
 
   <!-- Diğer section'lar tam sayfa -->

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, DestroyRef, ElementRef, ViewChild, inject } from '@angular/core';
+import { Component, AfterViewInit, DestroyRef, ElementRef, ViewChild, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BioContentComponent } from './components/bio-content/bio-content.component';
 import { WorkComponent } from './components/work/work';
@@ -35,6 +35,23 @@ export class HomeComponent implements AfterViewInit {
   private readonly cleanupCallbacks: Array<() => void> = [];
   private loadingCompleted = false;
   private loadingTimeoutId: number | null = null;
+  private hintStartTimerId: number | null = null;
+  private hasShownScrollHint = false;
+  private hintStartScrollY = 0;
+
+  readonly showScrollHint = signal(false);
+
+  private readonly syncScrollHintVisibility = effect(() => {
+    if (this.loadingState.isLoading()) {
+      this.clearHintTimers();
+      this.detachHintDismissListeners();
+      this.hasShownScrollHint = false;
+      this.showScrollHint.set(false);
+      return;
+    }
+
+    this.startScrollHintTimers();
+  });
 
   ngAfterViewInit() {
     this.initGSAP();
@@ -66,9 +83,73 @@ export class HomeComponent implements AfterViewInit {
 
     this.destroyRef.onDestroy(() => {
       this.clearLoadingTimeout();
+      this.clearHintTimers();
+      this.detachHintDismissListeners();
       this.runCleanupCallbacks();
       this.loadingState.finishLoading();
     });
+  }
+
+  private startScrollHintTimers(): void {
+    if (this.hasShownScrollHint || this.showScrollHint() || this.hintStartTimerId !== null) {
+      return;
+    }
+
+    // Wait for loading overlay exit animation to complete before showing the hint.
+    this.hintStartTimerId = window.setTimeout(() => {
+      this.hasShownScrollHint = true;
+      this.showScrollHint.set(true);
+      this.hintStartTimerId = null;
+      this.hintStartScrollY = window.scrollY;
+      this.attachHintDismissListeners();
+    }, this.loadingState.overlayExitDurationMs);
+  }
+
+  private clearHintTimers(): void {
+    if (this.hintStartTimerId !== null) {
+      window.clearTimeout(this.hintStartTimerId);
+      this.hintStartTimerId = null;
+    }
+  }
+
+  private attachHintDismissListeners(): void {
+    window.addEventListener('wheel', this.hideHintOnUserScrollIntent, { passive: true });
+    window.addEventListener('touchmove', this.hideHintOnUserScrollIntent, { passive: true });
+    window.addEventListener('keydown', this.hideHintOnKeyboardScrollIntent);
+    window.addEventListener('scroll', this.hideHintOnWindowScroll, { passive: true });
+  }
+
+  private detachHintDismissListeners(): void {
+    window.removeEventListener('wheel', this.hideHintOnUserScrollIntent);
+    window.removeEventListener('touchmove', this.hideHintOnUserScrollIntent);
+    window.removeEventListener('keydown', this.hideHintOnKeyboardScrollIntent);
+    window.removeEventListener('scroll', this.hideHintOnWindowScroll);
+  }
+
+  private readonly hideHintOnUserScrollIntent = (): void => {
+    this.hideScrollHint();
+  };
+
+  private readonly hideHintOnWindowScroll = (): void => {
+    if (Math.abs(window.scrollY - this.hintStartScrollY) > 2) {
+      this.hideScrollHint();
+    }
+  };
+
+  private readonly hideHintOnKeyboardScrollIntent = (event: KeyboardEvent): void => {
+    const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
+    if (scrollKeys.includes(event.key)) {
+      this.hideScrollHint();
+    }
+  };
+
+  private hideScrollHint(): void {
+    if (!this.showScrollHint()) {
+      return;
+    }
+
+    this.showScrollHint.set(false);
+    this.detachHintDismissListeners();
   }
 
   private finishLoading(): void {

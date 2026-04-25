@@ -12,7 +12,6 @@ import { LoadingStateService } from './shared/loading-state.service';
 })
 export class App {
   private readonly loadingState = inject(LoadingStateService);
-  private readonly overlayExitDurationMs = 900;
   private overlayExitTimerId: number | null = null;
 
   readonly isOverlayVisible = signal(true);
@@ -37,7 +36,7 @@ export class App {
       this.isOverlayVisible.set(false);
       this.isOverlayExiting.set(false);
       this.overlayExitTimerId = null;
-    }, this.overlayExitDurationMs);
+    }, this.loadingState.overlayExitDurationMs);
   });
 
   private clearOverlayExitTimer(): void {
