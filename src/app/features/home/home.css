@@ -254,6 +254,7 @@ body {
         width: 100%;
         max-width: 100%;
         flex: 0 0 100%;
+        padding: 0 0.75rem;
     }
 
     /* Genel Layout Yapısı */
