@@ -11,7 +11,7 @@ import { environment } from '../../../../../environments/environment';
   template: `
     <app-glass-wrapper panelClass="h-[67vh] bg-transparent backdrop-blur-[25px] p-3 md:p-4 rounded-2xl border border-white/10 shadow-2xl overflow-hidden max-h-[85vh] w-full max-w-none">
       <div class="w-full h-full overflow-hidden flex flex-col min-h-0 text-white">
-        <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-5 border-b border-white/20 pb-2 self-start text-white/95">
+        <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-5 border-b border-white/20 pb-2 w-full text-white/95">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
           <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight">Projects</h2>
         </div>

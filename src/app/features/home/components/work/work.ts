@@ -25,7 +25,7 @@ type Experience = {
   template: `
     <app-glass-wrapper panelClass="h-[67vh] bg-transparent backdrop-blur-[25px] p-3 sm:p-4 lg:p-5 rounded-2xl border border-white/10 shadow-2xl overflow-hidden max-h-[85vh] w-full max-w-none">
       <div #workScroll class="w-full h-full overflow-y-auto overflow-x-hidden custom-scrollbar pr-0.5 md:pr-2 text-white">
-        <div class="flex items-center gap-3 mb-6 md:mb-7 border-b border-white/20 pb-2 self-start text-white/95">
+        <div class="flex items-center gap-3 mb-6 md:mb-7 border-b border-white/20 pb-2 w-full text-white/95">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
           <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight">Experience</h2>
         </div>
