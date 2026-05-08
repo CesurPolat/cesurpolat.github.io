@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-education',
@@ -105,61 +106,5 @@ import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
   `
 })
 export class EducationComponent {
-  education = [
-    {
-      degree: "Associate's Degree",
-      field: 'Computer Programming',
-      institution: 'Sakarya University of Applied Sciences',
-      logo: '/subu.jpg',
-      logoAlt: 'Sakarya University of Applied Sciences logo',
-      logoClass: 'rounded-xl',
-      link: 'https://subu.edu.tr/?lang=en',
-      badge: 'State University',
-      year: 'Sep 2022 - Jun 2024',
-      description: 'GPA: 3.46/4.00 | Sakarya, Turkey',
-      metaNote: 'Program emphasis based on official SUBU Computer Programming program overviews.',
-      courseHighlights: [
-        'Programming Fundamentals',
-        'Web Design',
-        'Internet-Based Application Development',
-        'Database Management',
-        'Operating Systems',
-        'Computer Hardware',
-        'Computer Networks',
-        'Graphic Design & Office Software'
-      ],
-      focusAreas: [
-        'Algorithmic thinking',
-        'Application architecture basics',
-        'Full-stack web foundations',
-        'System and network literacy'
-      ]
-    },
-    {
-      degree: 'Vocational Technical High School',
-      field: 'Web Programming',
-      institution: 'Borsa Istanbul Mehmet Akif Ersoy',
-      logo: '/bist.png',
-      logoAlt: 'Borsa Istanbul Mehmet Akif Ersoy logo',
-      logoClass: 'scale-[0.9]',
-      link: 'https://makifeml.meb.k12.tr/',
-      badge: 'Technical Track',
-      year: 'Sep 2018 - Jun 2022',
-      description: 'Sakarya, Turkey',
-      metaNote: 'Track content reflects official Information Technologies / Web Programming field outcomes.',
-      courseHighlights: [
-        'Analysis & Requirement Breakdown',
-        'Algorithm Design',
-        'UI Layout Principles',
-        'Interactive Web Development',
-        'Local Testing & Publishing'
-      ],
-      focusAreas: [
-        'Responsive interface building',
-        'Front-end problem solving',
-        'Project-based technical training',
-        'Deployment-ready workflow habits'
-      ]
-    }
-  ];
+  education = environment.education;
 }

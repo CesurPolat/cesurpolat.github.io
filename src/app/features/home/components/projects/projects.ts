@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontRotationWrapperComponent } from '../../../../shared/font-rotation-wrapper';
 import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-projects',
@@ -60,42 +61,5 @@ import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
   `
 })
 export class ProjectsComponent {
-  projects = [
-    {
-      name: 'MiBudsClient',
-      description: 'Desktop client for Redmi Buds 6 Play. Battery tracking & low-latency mode.',
-      technologies: ['Python', 'Bleak', 'Tkinter'],
-      link: 'https://github.com/CesurPolat/MiBudsClient',
-      bgColor: '#1a1a1a',
-      bgImage: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=40&w=800&auto=format&fit=crop',
-      logo: null
-    },
-    {
-      name: 'DubAI',
-      description: 'AI-powered transcription, translation, and automated dubbing platform.',
-      technologies: ['Angular', 'Node.js', 'PyTorch', 'FFmpeg'],
-      link: 'https://github.com/CesurPolat/DubAI',
-      bgColor: '#2D3436',
-      bgImage: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?q=40&w=800&auto=format&fit=crop',
-      logo: null
-    },
-    {
-      name: 'Termoware',
-      description: 'Selection and quotation portal for leading industry companies in HVAC.',
-      technologies: ['ASP.NET', 'C#', 'MSSQL', 'gRPC'],
-      link: null,
-      bgColor: '#0984E3',
-      bgImage: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=40&w=800&auto=format&fit=crop',
-      logo: null
-    },
-    {
-      name: 'Storage Service',
-      description: 'Multi-tenant storage service with file compression and JWT access control.',
-      technologies: ['Angular', '.NET Core', 'Redis'],
-      link: null,
-      bgColor: '#6C5CE7',
-      bgImage: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=40&w=800&auto=format&fit=crop',
-      logo: null
-    }
-  ];
+  projects = environment.projects;
 }
