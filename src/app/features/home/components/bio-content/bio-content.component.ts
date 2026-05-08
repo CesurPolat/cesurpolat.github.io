@@ -15,8 +15,8 @@ import { environment } from '../../../../../environments/environment';
           <header class="mb-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div>
-                <h1 class="text-3xl lg:text-4xl font-black mb-1 tracking-tight">{{ profile.name }}</h1>
-                <h3 class="text-base lg:text-lg font-medium text-blue-400">
+                <h1 class="text-3xl lg:text-4xl font-black mb-2 tracking-tight text-white">{{ profile.name }}</h1>
+                <h3 class="text-xs md:text-sm font-black uppercase tracking-[0.24em] text-cyan-100/80">
                   {{ profile.title }}
                 </h3>
               </div>
