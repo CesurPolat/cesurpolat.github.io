@@ -7,8 +7,9 @@ export const environment = {
     linkedin: 'https://linkedin.com/in/cesurpolat',
     github: 'https://github.com/CesurPolat',
     impact: [
-      { label: 'Performance', desc: '90% reduction in HVAC calc time.' },
-      { label: 'Architecture', desc: 'Migrated to gRPC microservices.' }
+      { label: 'Performance', desc: 'Optimized HVAC calculation services, achieving a <b class="text-white">90% reduction</b> in processing time through algorithm refactoring.' },
+      { label: 'Architecture', desc: 'Migrated legacy calculation systems into resilient <b class="text-white">gRPC microservices</b> for enhanced scalability.' },
+      { label: 'Security', desc: 'Engineered multi-tenant identity systems and secure storage solutions using <b class="text-white">JWT</b> and <b class="text-white">.NET</b>.' }
     ],
     techStack: [
       { name: '.NET', badge: 'https://img.shields.io/badge/.NET-512BD4?style=flat&logo=dotnet&logoColor=white' },

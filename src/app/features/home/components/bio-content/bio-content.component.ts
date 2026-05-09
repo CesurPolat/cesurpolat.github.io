@@ -34,17 +34,20 @@ import { environment } from '../../../../../environments/environment';
             </div>
           </header>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 flex-1">
-            <!-- Left Column: Impact & Stack -->
-            <div class="space-y-8">
+          <div class="flex flex-col gap-8 mb-8 flex-1">
+            <!-- Top Row: Impact & Tech Stack -->
+            <div class="grid grid-cols-1 md:grid-cols-[7fr_3fr] gap-8">
               <section>
                 <h3 class="text-sm font-bold uppercase tracking-widest text-white/90 mb-4 flex items-center gap-2">
                   🚀 Engineering Impact
                 </h3>
-                <ul class="space-y-3 text-sm text-white/80">
-                  <li *ngFor="let item of profile.impact" class="flex gap-2">
-                    <span class="text-blue-500">•</span>
-                    <span><b class="text-white">{{ item.label }}:</b> {{ item.desc }}</span>
+                <ul class="space-y-3.5 text-sm text-white/80">
+                  <li *ngFor="let item of profile.impact" class="flex items-start gap-2.5">
+                    <span class="text-blue-400 mt-[3px] shrink-0 text-[15px] leading-none">•</span>
+                    <p class="leading-relaxed m-0 text-white/75">
+                      <b class="text-white font-bold mr-1">{{ item.label }}:</b> 
+                      <span [innerHTML]="item.desc"></span>
+                    </p>
                   </li>
                 </ul>
               </section>
@@ -59,12 +62,12 @@ import { environment } from '../../../../../environments/environment';
               </section>
             </div>
 
-            <!-- Right Column: Projects -->
+            <!-- Bottom Row: Projects -->
             <section>
               <h3 class="text-sm font-bold uppercase tracking-widest text-white/90 mb-4 flex items-center gap-2">
                 📂 Featured Projects
               </h3>
-              <div class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div *ngFor="let proj of profile.featuredProjects" class="p-3 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors group">
                   <div class="flex justify-between items-start mb-1">
                     <a [href]="proj.link" target="_blank" class="text-blue-400 font-bold text-sm hover:underline">{{ proj.name }}</a>
