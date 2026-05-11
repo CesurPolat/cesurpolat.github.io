@@ -61,23 +61,16 @@ export const environment = {
       badge: 'State University',
       year: 'Sep 2022 - Jun 2024',
       description: 'GPA: 3.46/4.00 | Sakarya, Turkey',
-      metaNote: 'Program emphasis based on official SUBU Computer Programming program overviews.',
+      metaNote: '',
       courseHighlights: [
         'Programming Fundamentals',
-        'Web Design',
-        'Internet-Based Application Development',
-        'Database Management',
+        'Object-Oriented Programming',
+        'Data Structures and Algorithms',
+        'Database Management Systems',
+        'Web Programming',
         'Operating Systems',
-        'Computer Hardware',
-        'Computer Networks',
-        'Graphic Design & Office Software'
+        'Computer Networks'
       ],
-      focusAreas: [
-        'Algorithmic thinking',
-        'Application architecture basics',
-        'Full-stack web foundations',
-        'System and network literacy'
-      ]
     },
     {
       degree: 'Vocational Technical High School',
@@ -87,22 +80,18 @@ export const environment = {
       logoAlt: 'Borsa Istanbul Mehmet Akif Ersoy logo',
       logoClass: 'scale-[0.9]',
       link: 'https://makifeml.meb.k12.tr/',
-      badge: 'Technical Track',
+      badge: 'State High School',
       year: 'Sep 2018 - Jun 2022',
       description: 'Sakarya, Turkey',
-      metaNote: 'Track content reflects official Information Technologies / Web Programming field outcomes.',
+      metaNote: '',
       courseHighlights: [
-        'Analysis & Requirement Breakdown',
-        'Algorithm Design',
-        'UI Layout Principles',
-        'Interactive Web Development',
-        'Local Testing & Publishing'
-      ],
-      focusAreas: [
-        'Responsive interface building',
-        'Front-end problem solving',
-        'Project-based technical training',
-        'Deployment-ready workflow habits'
+        'Professional Development',
+        'Object-Oriented Programming',
+        'Database Programming',
+        'Web Design and Development',
+        'Visual Programming',
+        'Networking Fundamentals',
+        'Operating Systems'
       ]
     }
   ],

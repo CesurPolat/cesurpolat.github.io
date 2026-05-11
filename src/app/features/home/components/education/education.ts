@@ -16,85 +16,40 @@ import { environment } from '../../../../../environments/environment';
         </div>
 
         <div class="relative border-l border-white/20 ml-1.5 md:ml-3 pl-5 md:pl-7 py-2 flex-1 flex flex-col justify-between gap-5 md:gap-6">
-          <div *ngFor="let edu of education" class="relative group">
-            <div class="absolute -left-7.5 md:-left-8.5 top-1 w-4 h-4 bg-white/10 border border-white/30 rotate-45 backdrop-blur-sm z-10"></div>
+          <div *ngFor="let edu of education" class="relative group transition-transform duration-300 hover:translate-x-1">
+            <div class="pointer-events-none absolute -left-[30px] md:-left-[36px] top-0 h-4 w-4 rounded-full border border-white/20 bg-white/10 backdrop-blur-md shadow-[0_10px_28px_rgba(103,232,249,0.24)]">
+              <span class="absolute inset-[2px] rounded-full border border-cyan-100/30 bg-gradient-to-br from-white/80 via-white/45 to-cyan-200/25"></span>
+              <span class="absolute left-1 top-1 h-1.5 w-1.5 rounded-full bg-white/80 blur-[0.5px]"></span>
+            </div>
 
-            <div class="transition-transform duration-300 hover:translate-x-1">
-              <span class="inline-block bg-white/10 border border-white/25 text-white text-[9px] font-black px-2.5 py-1 mb-2 uppercase rounded-full tracking-wider leading-none">{{ edu.year }}</span>
-              <h3 class="font-black text-xl md:text-2xl uppercase leading-tight mb-1.5 tracking-tight text-white">{{ edu.degree }}</h3>
-              <p class="font-bold text-base md:text-lg mb-2.5 text-white/70 italic">{{ edu.field }}</p>
-              <div class="flex items-center gap-2 mb-3 border-b border-white/15 pb-2">
-                <a
-                  *ngIf="edu.link; else institutionText"
-                  [href]="edu.link"
-                  target="_blank"
-                  class="inline-flex items-center gap-2 text-xs md:text-sm font-black uppercase text-white/90 hover:text-blue-300 transition-colors"
-                >
-                  <span>{{ edu.institution }}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-                <ng-template #institutionText>
-                  <p class="text-xs md:text-sm font-black uppercase text-white/90">{{ edu.institution }}</p>
-                </ng-template>
-              </div>
-
-              <div class="relative overflow-hidden border border-white/15 p-3 md:p-4 bg-white/5 rounded-[1.4rem] shadow-xl transition-all hover:bg-white/10 hover:border-white/25">
-                <div class="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white/10 via-white/[0.04] to-transparent"></div>
-
-                <div class="relative flex flex-col sm:flex-row items-start gap-3 md:gap-4">
-                  <div class="shrink-0 w-12 h-12 sm:w-14 sm:h-14 md:w-[4.25rem] md:h-[4.25rem] rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md shadow-[0_10px_30px_rgba(15,23,42,0.28)] flex items-center justify-center px-2 md:px-3 transition-all duration-300 group-hover:bg-white/15 group-hover:border-white/30 group-hover:scale-[1.03]">
-                    <img
-                      [src]="edu.logo"
-                      [alt]="edu.logoAlt"
-                      class="w-full h-full object-contain drop-shadow-[0_8px_18px_rgba(15,23,42,0.28)]"
-                      [ngClass]="edu.logoClass"
-                    />
-                  </div>
-
-                  <div class="min-w-0 flex-1">
-                    <div class="flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-white/55 mb-2.5">
-                      <span class="shrink-0">Campus</span>
-                      <span class="h-px flex-1 bg-white/10"></span>
-                      <span class="shrink-0">{{ edu.badge }}</span>
-                    </div>
-                    <p class="font-medium text-sm md:text-base leading-relaxed text-white/85">{{ edu.description }}</p>
-                    <p *ngIf="edu.metaNote" class="mt-2 text-xs md:text-sm leading-relaxed text-white/60">
-                      {{ edu.metaNote }}
-                    </p>
-                  </div>
+            <div class="border border-white/10 bg-white/5 rounded-2xl p-3 md:p-4 transition-colors hover:border-white/20 hover:bg-white/10">
+              <div class="flex flex-col sm:flex-row items-start gap-3 md:gap-4">
+                <div class="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl border border-white/20 bg-white/10 flex items-center justify-center p-1.5">
+                  <img [src]="edu.logo" [alt]="edu.logoAlt" class="w-full h-full object-contain" [ngClass]="edu.logoClass" />
                 </div>
-
-                <div class="relative mt-4 grid grid-cols-1 xl:grid-cols-2 gap-3">
-                  <div class="rounded-[1.25rem] border border-white/10 bg-slate-950/20 p-3 md:p-4">
-                    <div class="flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-cyan-100/70 mb-3">
-                      <span class="shrink-0">Core Coursework</span>
-                      <span class="h-px flex-1 bg-white/10"></span>
-                      <span class="shrink-0">{{ edu.courseHighlights.length }} Topics</span>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                      <span
-                        *ngFor="let course of edu.courseHighlights"
-                        class="rounded-full border border-cyan-100/15 bg-white/[0.06] px-2.5 py-1.5 text-[11px] md:text-xs font-semibold text-white/80"
-                      >
-                        {{ course }}
-                      </span>
-                    </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex justify-between items-start gap-2">
+                    <h3 class="font-black text-lg md:text-xl uppercase leading-tight tracking-tight text-white">{{ edu.degree }}</h3>
+                    <span class="shrink-0 bg-white/10 border border-white/25 text-white text-[9px] font-bold px-2 py-0.5 uppercase rounded-full tracking-wider leading-none">{{ edu.year }}</span>
                   </div>
-
-                  <div class="rounded-[1.25rem] border border-white/10 bg-slate-950/20 p-3 md:p-4">
-                    <div class="flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-amber-100/70 mb-3">
-                      <span class="shrink-0">Focus Areas</span>
-                      <span class="h-px flex-1 bg-white/10"></span>
-                      <span class="shrink-0">{{ edu.focusAreas.length }} Highlights</span>
-                    </div>
-                    <div class="grid grid-cols-1 gap-2">
-                      <div
-                        *ngFor="let focus of edu.focusAreas"
-                        class="rounded-2xl border border-white/8 bg-white/[0.045] px-3 py-2 text-xs md:text-sm font-medium leading-relaxed text-white/82"
-                      >
-                        {{ focus }}
-                      </div>
-                    </div>
+                  <p class="font-bold text-sm md:text-base text-white/60 italic">{{ edu.field }}</p>
+                  <a *ngIf="edu.link" [href]="edu.link" target="_blank" class="inline-flex items-center gap-1.5 text-xs md:text-sm font-bold uppercase text-white/80 hover:text-blue-300 transition-colors mt-1">
+                    <span>{{ edu.institution }}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                  <p *ngIf="!edu.link" class="text-xs md:text-sm font-bold uppercase text-white/80 mt-1">{{ edu.institution }}</p>
+                </div>
+              </div>
+              <p class="mt-3 text-sm md:text-base leading-relaxed text-white/80">{{ edu.description }}</p>
+              <p *ngIf="edu.metaNote" class="mt-1.5 text-xs md:text-sm leading-relaxed text-white/50 italic">{{ edu.metaNote }}</p>
+              <div class="h-px bg-white/10 my-3"></div>
+              <div class="flex flex-col gap-3">
+                <div>
+                  <h4 class="text-xs font-bold uppercase tracking-widest text-cyan-100/70 mb-2">Core Coursework</h4>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span *ngFor="let course of edu.courseHighlights" class="rounded-full border border-cyan-100/15 bg-white/[0.06] px-2 py-1 text-[10px] md:text-[11px] font-medium text-white/80">
+                      {{ course }}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -103,7 +58,7 @@ import { environment } from '../../../../../environments/environment';
         </div>
       </div>
     </app-glass-wrapper>
-  `
+  `,
 })
 export class EducationComponent {
   education = environment.education;
