@@ -25,7 +25,7 @@ import { environment } from '../../../../../environments/environment';
                   <img src="https://img.shields.io/badge/Email-blue?style=flat&logo=gmail&logoColor=white" alt="Email">
                 </a>
                 <a [href]="profile.linkedin" target="_blank" class="hover:scale-105 transition-transform">
-                  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn">
+                  <img src="https://custom-icon-badges.demolab.com/badge/LinkedIn-0A66C2?logo=linkedin-white&logoColor=fff" alt="LinkedIn">
                 </a>
                 <a [href]="profile.github" target="_blank" class="hover:scale-105 transition-transform">
                   <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub">

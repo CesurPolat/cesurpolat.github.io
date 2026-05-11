@@ -16,11 +16,22 @@ export const environment = {
       { name: 'Angular', badge: 'https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white' },
       { name: 'Node.js', badge: 'https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white' },
       { name: 'Python', badge: 'https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white' },
-      { name: 'MSSQL', badge: 'https://img.shields.io/badge/MSSQL-CC2927?style=flat&logo=microsoft-sql-server&logoColor=white' }
+      { name: 'MSSQL', badge: 'https://custom-icon-badges.demolab.com/badge/Microsoft%20SQL%20Server-CC2927?logo=mssqlserver-white&logoColor=white' }
     ],
     featuredProjects: [
-      { name: 'MiBudsClient', link: 'https://github.com/CesurPolat/MiBudsClient', tech: 'Python', techClass: 'bg-blue-500/20 text-blue-300', desc: 'Desktop client for Redmi Buds 6 Play. Battery tracking & low-latency mode.' },
-      { name: 'DubAI', link: 'https://github.com/CesurPolat/DubAI', tech: 'Angular', techClass: 'bg-red-500/20 text-red-300', desc: 'AI-powered transcription, translation, and automated dubbing.' }
+      { 
+        name: 'MiBudsClient', 
+        link: 'https://github.com/CesurPolat/MiBudsClient', 
+        tech: 'Python', 
+        techClass: 'bg-blue-500/20 text-blue-300', 
+        desc: 'A Python & Flet-based desktop client for Redmi Buds 6 Play. Features real-time battery tracking and low-latency mode via Bluetooth.' 
+      },
+      { name: 'VectorMark', 
+        link: 'https://github.com/CesurPolat/VectorMark', 
+        tech: 'TypeScript', 
+        techClass: 'bg-sky-500/20 text-sky-300', 
+        desc: 'Smart bookmark manager that automatically categorizes and organizes your saved websites using semantic search.' 
+      }
     ],
     quote: '"Code is the architecture of thought; to optimize is to honor the elegance of logic."'
   },
