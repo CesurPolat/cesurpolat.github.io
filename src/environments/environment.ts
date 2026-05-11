@@ -187,7 +187,7 @@ export const environment = {
         'Configured and checked network equipment to keep local connectivity dependable for users.',
         'Gained hands-on experience with practical IT support discipline in a structured institutional environment.'
       ],
-      techStack: ['Windows', 'Device Imaging', 'Network Setup', 'Hardware Support']
+      techStack: ['Device Imaging', 'Network Setup', 'Hardware Support']
     },
     {
       title: 'Angular Developer (Internship)',
