@@ -99,7 +99,7 @@ export const environment = {
     {
       name: 'MiBudsClient',
       description: 'Desktop client for Redmi Buds 6 Play. Battery tracking & low-latency mode.',
-      technologies: ['Python', 'Bleak', 'Tkinter'],
+      technologies: ['Python', 'Flet', 'Bluetooth'],
       link: 'https://github.com/CesurPolat/MiBudsClient',
       bgColor: '#1a1a1a',
       bgImage: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=40&w=800&auto=format&fit=crop',
@@ -108,10 +108,10 @@ export const environment = {
     {
       name: 'VectorMark',
       description: 'Smart bookmark manager that automatically categorizes and organizes your saved websites using semantic search.',
-      technologies: ['TypeScript', 'React', 'Node.js'],
+      technologies: ['Browser Extension', 'TypeScript', 'Vector Databases'],
       link: 'https://github.com/CesurPolat/VectorMark',
       bgColor: '#1a1a1a',
-      bgImage: 'https://private-user-images.githubusercontent.com/86518008/590142117-7ebd5456-8114-43a7-8648-1169302c111f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1MjgzMDksIm5iZiI6MTc3ODUyODAwOSwicGF0aCI6Ii84NjUxODAwOC81OTAxNDIxMTctN2ViZDU0NTYtODExNC00M2E3LTg2NDgtMTE2OTMwMmMxMTFmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA1MTElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNTExVDE5MzMyOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWYxNDlkZWI4ZWEyYTRhNDM1MjA3OWZiZTg0MDBjZjEzOWM0NzZhZmUxZWM4ZDYzMDQ2MjAwMzQ2MzI1M2ZmMjMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.gGVe0Jn8PWBQH4LJ2r9uDeNQL7yh_SN6zNwQwvCK8xk',
+      bgImage: 'banner.png',
       logo: "https://github.com/CesurPolat/VectorMark/blob/main/public/icons/VectorMarkIcon.png?raw=true"
     },
     {
