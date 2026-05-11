@@ -16,7 +16,21 @@ export const environment = {
       { name: 'Angular', badge: 'https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white' },
       { name: 'Node.js', badge: 'https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white' },
       { name: 'Python', badge: 'https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white' },
-      { name: 'MSSQL', badge: 'https://custom-icon-badges.demolab.com/badge/Microsoft%20SQL%20Server-CC2927?logo=mssqlserver-white&logoColor=white' }
+      { name: 'MSSQL', badge: 'https://custom-icon-badges.demolab.com/badge/Microsoft%20SQL%20Server-CC2927?logo=mssqlserver-white&logoColor=white' },
+      { name: 'Electron', badge: 'https://img.shields.io/badge/Electron-47848F?style=flat&logo=electron&logoColor=white' },
+      { name: 'Flet', badge: 'https://img.shields.io/badge/Flet-0095D5?style=flat&logo=flutter&logoColor=white' },
+      { name: 'Tailwind CSS', badge: 'https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white' },
+      
+      /*{ name: 'gRPC', badge: 'https://img.shields.io/badge/gRPC-244C5A?style=flat&logo=grpc&logoColor=white' },
+      { name: 'NoSQL', badge: 'https://img.shields.io/badge/NoSQL-4DB33D?style=flat&logo=mongodb&logoColor=white' },
+      { name: 'Bluetooth', badge: 'https://img.shields.io/badge/Bluetooth-0082FC?style=flat&logo=bluetooth&logoColor=white' },
+      { name: 'Cloudflare', badge: 'https://img.shields.io/badge/Cloudflare-F38020?style=flat&logo=cloudflare&logoColor=white' },
+      { name: 'Firebase', badge: 'https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=firebase&logoColor=black' },
+      { name: 'FFmpeg', badge: 'https://img.shields.io/badge/FFmpeg-007808?style=flat&logo=ffmpeg&logoColor=white' },
+      { name: 'OpenAI', badge: 'https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white' },
+      { name: 'Docker', badge: 'https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white' },
+      { name: 'IIS', badge: 'https://img.shields.io/badge/IIS-0078D7?style=flat&logo=windows&logoColor=white' },*/
+
     ],
     featuredProjects: [
       { 
@@ -100,33 +114,33 @@ export const environment = {
       link: 'https://github.com/CesurPolat/MiBudsClient',
       bgColor: '#1a1a1a',
       bgImage: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=40&w=800&auto=format&fit=crop',
-      logo: null
+      logo: "https://github.com/CesurPolat/MiBudsClient/blob/main/assets/icon.png?raw=true"
     },
     {
-      name: 'DubAI',
-      description: 'AI-powered transcription, translation, and automated dubbing platform.',
-      technologies: ['Angular', 'Node.js', 'PyTorch', 'FFmpeg'],
-      link: 'https://github.com/CesurPolat/DubAI',
-      bgColor: '#2D3436',
-      bgImage: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?q=40&w=800&auto=format&fit=crop',
-      logo: null
+      name: 'VectorMark',
+      description: 'Smart bookmark manager that automatically categorizes and organizes your saved websites using semantic search.',
+      technologies: ['TypeScript', 'React', 'Node.js'],
+      link: 'https://github.com/CesurPolat/VectorMark',
+      bgColor: '#1a1a1a',
+      bgImage: 'https://private-user-images.githubusercontent.com/86518008/590142117-7ebd5456-8114-43a7-8648-1169302c111f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzg1MjgzMDksIm5iZiI6MTc3ODUyODAwOSwicGF0aCI6Ii84NjUxODAwOC81OTAxNDIxMTctN2ViZDU0NTYtODExNC00M2E3LTg2NDgtMTE2OTMwMmMxMTFmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA1MTElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNTExVDE5MzMyOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWYxNDlkZWI4ZWEyYTRhNDM1MjA3OWZiZTg0MDBjZjEzOWM0NzZhZmUxZWM4ZDYzMDQ2MjAwMzQ2MzI1M2ZmMjMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.gGVe0Jn8PWBQH4LJ2r9uDeNQL7yh_SN6zNwQwvCK8xk',
+      logo: "https://github.com/CesurPolat/VectorMark/blob/main/public/icons/VectorMarkIcon.png?raw=true"
     },
     {
       name: 'Termoware',
       description: 'Selection and quotation portal for leading industry companies in HVAC.',
       technologies: ['ASP.NET', 'C#', 'MSSQL', 'gRPC'],
-      link: null,
+      link: "https://primeware.com.tr/urunler",
       bgColor: '#0984E3',
-      bgImage: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=40&w=800&auto=format&fit=crop',
-      logo: null
+      bgImage: 'https://primeware.com.tr//Uploads/Slider/77d50353-39f7-4d29-8fe4-373b1e24d72a.png',
+      logo: "https://primeware.com.tr/Content/img/primeware_icon.png"
     },
     {
-      name: 'Storage Service',
-      description: 'Multi-tenant storage service with file compression and JWT access control.',
-      technologies: ['Angular', '.NET Core', 'Redis'],
-      link: null,
+      name: 'IPTV',
+      description: 'Android TV app for streaming IPTV content with user-friendly interface and reliable performance.',
+      technologies: ['Angular', '.NET Core', 'Playwright', 'Capacitor'],
+      link: "https://iptv-603b2.web.app/#/home",
       bgColor: '#6C5CE7',
-      bgImage: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=40&w=800&auto=format&fit=crop',
+      bgImage: 'iptv.png',
       logo: null
     }
   ],
