@@ -225,23 +225,7 @@ type Experience = {
             </p>
           </div>
 
-          <div class="relative z-10 mt-4 grid grid-cols-1 gap-4 xl:grid-cols-[1.2fr_0.8fr]">
-            <div class="rounded-[1.25rem] border border-white/10 bg-white/[0.045] p-4">
-              <div class="flex items-center gap-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.22em] text-white/58 mb-3">
-                <span>Highlights</span>
-                <span class="h-px flex-1 bg-white/10"></span>
-              </div>
-
-              <div class="grid gap-2.5">
-                <div
-                  *ngFor="let bullet of active.detailBullets"
-                  class="rounded-2xl border border-white/8 bg-white/[0.04] px-3 py-2.5 text-xs md:text-sm leading-relaxed text-white/82"
-                >
-                  {{ bullet }}
-                </div>
-              </div>
-            </div>
-
+          <div class="relative z-10 mt-4 grid grid-cols-1 gap-4">
             <div class="rounded-[1.25rem] border border-white/10 bg-white/[0.045] p-4">
               <div class="flex items-center gap-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.22em] text-white/58 mb-3">
                 <span>Tech Stack</span>
@@ -255,6 +239,22 @@ type Experience = {
                 >
                   {{ tech }}
                 </span>
+              </div>
+            </div>
+
+            <div class="rounded-[1.25rem] border border-white/10 bg-white/[0.045] p-4">
+              <div class="flex items-center gap-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.22em] text-white/58 mb-3">
+                <span>Highlights</span>
+                <span class="h-px flex-1 bg-white/10"></span>
+              </div>
+
+              <div class="grid gap-2.5">
+                <div
+                  *ngFor="let bullet of active.detailBullets"
+                  class="rounded-2xl border border-white/8 bg-white/[0.04] px-3 py-2.5 text-xs md:text-sm leading-relaxed text-white/82"
+                >
+                  {{ bullet }}
+                </div>
               </div>
             </div>
           </div>
