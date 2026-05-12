@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontRotationWrapperComponent } from '../../../../shared/font-rotation-wrapper';
 import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-projects',
@@ -10,7 +11,7 @@ import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
   template: `
     <app-glass-wrapper panelClass="h-[67vh] bg-transparent backdrop-blur-[25px] p-3 md:p-4 rounded-2xl border border-white/10 shadow-2xl overflow-hidden max-h-[85vh] w-full max-w-none">
       <div class="w-full h-full overflow-hidden flex flex-col min-h-0 text-white">
-        <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-5 border-b border-white/20 pb-2 self-start text-white/95">
+        <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-5 border-b border-white/20 pb-2 w-full text-white/95">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
           <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight">Projects</h2>
         </div>
@@ -60,42 +61,5 @@ import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
   `
 })
 export class ProjectsComponent {
-  projects = [
-    {
-      name: 'MiBudsClient',
-      description: 'Desktop client for Redmi Buds 6 Play. Battery tracking & low-latency mode.',
-      technologies: ['Python', 'Bleak', 'Tkinter'],
-      link: 'https://github.com/CesurPolat/MiBudsClient',
-      bgColor: '#1a1a1a',
-      bgImage: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=40&w=800&auto=format&fit=crop',
-      logo: null
-    },
-    {
-      name: 'DubAI',
-      description: 'AI-powered transcription, translation, and automated dubbing platform.',
-      technologies: ['Angular', 'Node.js', 'PyTorch', 'FFmpeg'],
-      link: 'https://github.com/CesurPolat/DubAI',
-      bgColor: '#2D3436',
-      bgImage: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?q=40&w=800&auto=format&fit=crop',
-      logo: null
-    },
-    {
-      name: 'Termoware',
-      description: 'Selection and quotation portal for leading industry companies in HVAC.',
-      technologies: ['ASP.NET', 'C#', 'MSSQL', 'gRPC'],
-      link: null,
-      bgColor: '#0984E3',
-      bgImage: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=40&w=800&auto=format&fit=crop',
-      logo: null
-    },
-    {
-      name: 'Storage Service',
-      description: 'Multi-tenant storage service with file compression and JWT access control.',
-      technologies: ['Angular', '.NET Core', 'Redis'],
-      link: null,
-      bgColor: '#6C5CE7',
-      bgImage: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=40&w=800&auto=format&fit=crop',
-      logo: null
-    }
-  ];
+  projects = environment.projects;
 }
