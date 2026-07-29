@@ -54,7 +54,7 @@ export const environment = {
       degree: "Associate's Degree",
       field: 'Computer Programming',
       institution: 'Sakarya University of Applied Sciences',
-      logo: '/images/logos/subu.jpg',
+      logo: '/images/logos/subu.webp',
       logoAlt: 'Sakarya University of Applied Sciences logo',
       logoClass: 'rounded-xl',
       link: 'https://subu.edu.tr/?lang=en',
@@ -76,7 +76,7 @@ export const environment = {
       degree: 'Vocational Technical High School',
       field: 'Web Programming',
       institution: 'Borsa Istanbul Mehmet Akif Ersoy',
-      logo: '/images/logos/bist.png',
+      logo: '/images/logos/bist.webp',
       logoAlt: 'Borsa Istanbul Mehmet Akif Ersoy logo',
       logoClass: 'scale-[0.9]',
       link: 'https://makifeml.meb.k12.tr/',
@@ -102,8 +102,8 @@ export const environment = {
       technologies: ['Python', 'Flet', 'Bluetooth'],
       link: 'https://github.com/CesurPolat/MiBudsClient',
       bgColor: '#1a1a1a',
-      bgImage: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=40&w=800&auto=format&fit=crop',
-      logo: "https://github.com/CesurPolat/MiBudsClient/blob/main/assets/icon.png?raw=true"
+      bgImage: '/images/projects/mibuds.webp',
+      logo: "/images/projects/MiBudsClientIcon.webp"
     },
     {
       name: 'VectorMark',
@@ -111,8 +111,8 @@ export const environment = {
       technologies: ['Browser Extension', 'TypeScript', 'Vector Databases'],
       link: 'https://github.com/CesurPolat/VectorMark',
       bgColor: '#1a1a1a',
-      bgImage: '/images/projects/banner.png',
-      logo: "https://github.com/CesurPolat/VectorMark/blob/main/public/icons/VectorMarkIcon.png?raw=true"
+      bgImage: '/images/projects/banner.webp',
+      logo: "/images/projects/VectorMarkIcon.webp"
     },
     {
       name: 'Termoware',
@@ -120,8 +120,8 @@ export const environment = {
       technologies: ['ASP.NET', 'C#', 'MSSQL', 'gRPC'],
       link: "https://primeware.com.tr/urunler",
       bgColor: '#0984E3',
-      bgImage: 'https://primeware.com.tr//Uploads/Slider/77d50353-39f7-4d29-8fe4-373b1e24d72a.png',
-      logo: "https://primeware.com.tr/Content/img/primeware_icon.png"
+      bgImage: '/images/projects/termoware.webp',
+      logo: "/images/logos/primeware.webp"
     },
     {
       name: 'IPTV',
@@ -129,7 +129,7 @@ export const environment = {
       technologies: ['Angular', '.NET Core', 'Playwright', 'Capacitor'],
       link: "https://iptv-603b2.web.app/#/home",
       bgColor: '#6C5CE7',
-      bgImage: '/images/projects/iptv.png',
+      bgImage: '/images/projects/iptv.webp',
       logo: null
     }
   ],
@@ -137,7 +137,7 @@ export const environment = {
     {
       title: 'Full-Stack Developer (Full-time)',
       company: 'Primeware Software Solutions',
-      logo: '/images/logos/primeware.png',
+      logo: '/images/logos/primeware.webp',
       logoAlt: 'Primeware Software Solutions logo',
       link: 'https://primeware.com.tr',
       period: 'Jul 2024 - Mar 2025 / 9 mos',
@@ -155,7 +155,7 @@ export const environment = {
     {
       title: 'Full-Stack Developer (Internship)',
       company: 'Primeware Software Solutions',
-      logo: '/images/logos/primeware.png',
+      logo: '/images/logos/primeware.webp',
       logoAlt: 'Primeware Software Solutions logo',
       link: 'https://primeware.com.tr',
       period: 'Jan 2024 - Jun 2024 / 6 mos',
@@ -173,7 +173,7 @@ export const environment = {
     {
       title: 'IT Technician (Internship)',
       company: 'TURASAS',
-      logo: '/images/logos/turasas.png',
+      logo: '/images/logos/turasas.webp',
       logoAlt: 'TURASAS logo',
       logoClass: 'scale-[0.92]',
       link: 'https://www.turasas.gov.tr',
@@ -192,7 +192,7 @@ export const environment = {
     {
       title: 'Angular Developer (Internship)',
       company: 'Digisoft Software',
-      logo: '/images/logos/digisoft.jpg',
+      logo: '/images/logos/digisoft.webp',
       logoAlt: 'Digisoft Software logo',
       logoClass: 'rounded-lg',
       link: 'https://digisoft.com.tr',

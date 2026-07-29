@@ -24,7 +24,7 @@ body {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2FzeqvAWp.jpg&f=1&nofb=1&ipt=474be3a310e4bdafd4ebed92827dfa856f9f2be2509b884f5ff79f72f698239f');
+    background-image: url('/images/backgrounds/lightBackground.webp');
     background-size: cover;
     background-position: center;
     z-index: -1;
