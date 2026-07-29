@@ -24,7 +24,7 @@ body {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url('/images/backgrounds/lightBackground.webp');
+    background-image: url('/images/backgrounds/lightBackground-Desktop_Compressed.webp');
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -207,6 +207,10 @@ body {
 
 /* Mobil Düzenleme (768px ve altı) */
 @media (max-width: 768px) {
+
+    .layout-container::before {
+        background-image: url('/images/backgrounds/lightBackground-Mobil_Compressed.webp');
+    }
 
     /* Section 1 Yapısı */
     .section-1-wrapper {

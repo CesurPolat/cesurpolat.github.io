@@ -76,7 +76,7 @@ export const environment = {
       degree: 'Vocational Technical High School',
       field: 'Web Programming',
       institution: 'Borsa Istanbul Mehmet Akif Ersoy',
-      logo: '/images/logos/bist.webp',
+      logo: '/images/logos/bist-46x46.webp',
       logoAlt: 'Borsa Istanbul Mehmet Akif Ersoy logo',
       logoClass: 'scale-[0.9]',
       link: 'https://makifeml.meb.k12.tr/',
@@ -112,7 +112,7 @@ export const environment = {
       link: 'https://github.com/CesurPolat/VectorMark',
       bgColor: '#1a1a1a',
       bgImage: '/images/projects/banner.webp',
-      logo: "/images/projects/VectorMarkIcon.webp"
+      logo: "/images/projects/VectorMarkIcon-46x46.webp"
     },
     {
       name: 'Termoware',
@@ -121,7 +121,7 @@ export const environment = {
       link: "https://primeware.com.tr/urunler",
       bgColor: '#0984E3',
       bgImage: '/images/projects/termoware.webp',
-      logo: "/images/logos/primeware.webp"
+      logo: "/images/logos/primeware-46x46.webp"
     },
     {
       name: 'IPTV',
@@ -137,7 +137,7 @@ export const environment = {
     {
       title: 'Full-Stack Developer (Full-time)',
       company: 'Primeware Software Solutions',
-      logo: '/images/logos/primeware.webp',
+      logo: '/images/logos/primeware-46x46.webp',
       logoAlt: 'Primeware Software Solutions logo',
       link: 'https://primeware.com.tr',
       period: 'Jul 2024 - Mar 2025 / 9 mos',
@@ -155,7 +155,7 @@ export const environment = {
     {
       title: 'Full-Stack Developer (Internship)',
       company: 'Primeware Software Solutions',
-      logo: '/images/logos/primeware.webp',
+      logo: '/images/logos/primeware-46x46.webp',
       logoAlt: 'Primeware Software Solutions logo',
       link: 'https://primeware.com.tr',
       period: 'Jan 2024 - Jun 2024 / 6 mos',
