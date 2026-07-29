@@ -54,7 +54,7 @@ export const environment = {
       degree: "Associate's Degree",
       field: 'Computer Programming',
       institution: 'Sakarya University of Applied Sciences',
-      logo: '/subu.jpg',
+      logo: '/images/logos/subu.jpg',
       logoAlt: 'Sakarya University of Applied Sciences logo',
       logoClass: 'rounded-xl',
       link: 'https://subu.edu.tr/?lang=en',
@@ -76,7 +76,7 @@ export const environment = {
       degree: 'Vocational Technical High School',
       field: 'Web Programming',
       institution: 'Borsa Istanbul Mehmet Akif Ersoy',
-      logo: '/bist.png',
+      logo: '/images/logos/bist.png',
       logoAlt: 'Borsa Istanbul Mehmet Akif Ersoy logo',
       logoClass: 'scale-[0.9]',
       link: 'https://makifeml.meb.k12.tr/',
@@ -111,7 +111,7 @@ export const environment = {
       technologies: ['Browser Extension', 'TypeScript', 'Vector Databases'],
       link: 'https://github.com/CesurPolat/VectorMark',
       bgColor: '#1a1a1a',
-      bgImage: 'banner.png',
+      bgImage: '/images/projects/banner.png',
       logo: "https://github.com/CesurPolat/VectorMark/blob/main/public/icons/VectorMarkIcon.png?raw=true"
     },
     {
@@ -129,7 +129,7 @@ export const environment = {
       technologies: ['Angular', '.NET Core', 'Playwright', 'Capacitor'],
       link: "https://iptv-603b2.web.app/#/home",
       bgColor: '#6C5CE7',
-      bgImage: 'iptv.png',
+      bgImage: '/images/projects/iptv.png',
       logo: null
     }
   ],
@@ -137,7 +137,7 @@ export const environment = {
     {
       title: 'Full-Stack Developer (Full-time)',
       company: 'Primeware Software Solutions',
-      logo: '/primeware.png',
+      logo: '/images/logos/primeware.png',
       logoAlt: 'Primeware Software Solutions logo',
       link: 'https://primeware.com.tr',
       period: 'Jul 2024 - Mar 2025 / 9 mos',
@@ -155,7 +155,7 @@ export const environment = {
     {
       title: 'Full-Stack Developer (Internship)',
       company: 'Primeware Software Solutions',
-      logo: '/primeware.png',
+      logo: '/images/logos/primeware.png',
       logoAlt: 'Primeware Software Solutions logo',
       link: 'https://primeware.com.tr',
       period: 'Jan 2024 - Jun 2024 / 6 mos',
@@ -173,7 +173,7 @@ export const environment = {
     {
       title: 'IT Technician (Internship)',
       company: 'TURASAS',
-      logo: '/turasas.png',
+      logo: '/images/logos/turasas.png',
       logoAlt: 'TURASAS logo',
       logoClass: 'scale-[0.92]',
       link: 'https://www.turasas.gov.tr',
@@ -192,7 +192,7 @@ export const environment = {
     {
       title: 'Angular Developer (Internship)',
       company: 'Digisoft Software',
-      logo: '/digisoft.jpg',
+      logo: '/images/logos/digisoft.jpg',
       logoAlt: 'Digisoft Software logo',
       logoClass: 'rounded-lg',
       link: 'https://digisoft.com.tr',
