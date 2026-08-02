@@ -64,16 +64,16 @@ import { environment } from '../../../../../environments/environment';
 
             <!-- Bottom Row: Projects -->
             <section>
-              <h2 class="text-sm font-bold uppercase tracking-widest text-white/90 mb-4 flex items-center gap-2">
+              <h2 class="text-sm font-bold uppercase tracking-widest text-white mb-4 flex items-center gap-2">
                 📂 Featured Projects
               </h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div *ngFor="let proj of profile.featuredProjects" class="p-3 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors group">
                   <div class="flex justify-between items-start mb-1">
-                    <a [href]="proj.link" target="_blank" class="text-blue-400 font-bold text-sm hover:underline">{{ proj.name }}</a>
-                    <span class="text-[10px] px-1.5 rounded" [ngClass]="proj.techClass">{{ proj.tech }}</span>
+                    <a [href]="proj.link" target="_blank" class="text-white font-bold text-sm underline underline-offset-2 decoration-cyan-300/80 hover:text-cyan-100">{{ proj.name }}</a>
+                    <span class="text-[10px] font-bold px-1.5 rounded" [ngClass]="proj.techClass">{{ proj.tech }}</span>
                   </div>
-                  <p class="text-xs text-white/60 line-clamp-2">{{ proj.desc }}</p>
+                  <p class="text-xs text-white/85 line-clamp-2">{{ proj.desc }}</p>
                 </div>
               </div>
             </section>
