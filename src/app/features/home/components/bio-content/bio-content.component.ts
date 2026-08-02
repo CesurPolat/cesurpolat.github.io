@@ -16,9 +16,9 @@ import { environment } from '../../../../../environments/environment';
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div>
                 <h1 class="text-3xl lg:text-4xl font-black mb-2 tracking-tight text-white">{{ profile.name }}</h1>
-                <h3 class="text-xs md:text-sm font-black uppercase tracking-[0.24em] text-cyan-100/80">
+                <p class="text-xs md:text-sm font-black uppercase tracking-[0.24em] text-cyan-100/80">
                   {{ profile.title }}
-                </h3>
+                </p>
               </div>
               <div class="flex flex-wrap gap-2">
                 <a [href]="'mailto:' + profile.email" target="_blank" class="hover:scale-105 transition-transform">
@@ -38,9 +38,9 @@ import { environment } from '../../../../../environments/environment';
             <!-- Top Row: Impact & Tech Stack -->
             <div class="grid grid-cols-1 md:grid-cols-[7fr_3fr] gap-8">
               <section>
-                <h3 class="text-sm font-bold uppercase tracking-widest text-white/90 mb-4 flex items-center gap-2">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-white/90 mb-4 flex items-center gap-2">
                   🚀 Engineering Impact
-                </h3>
+                </h2>
                 <ul class="space-y-3.5 text-sm text-white/80">
                   <li *ngFor="let item of profile.impact" class="flex items-start gap-2.5">
                     <span class="text-blue-400 mt-[3px] shrink-0 text-[15px] leading-none">•</span>
@@ -53,9 +53,9 @@ import { environment } from '../../../../../environments/environment';
               </section>
 
               <section>
-                <h3 class="text-sm font-bold uppercase tracking-widest text-white/90 mb-4 flex items-center gap-2">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-white/90 mb-4 flex items-center gap-2">
                   🛠️ Tech Stack
-                </h3>
+                </h2>
                 <div class="flex flex-wrap gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
                   <img *ngFor="let tech of profile.techStack" [src]="tech.badge" [alt]="tech.name" class="h-5">
                 </div>
@@ -64,9 +64,9 @@ import { environment } from '../../../../../environments/environment';
 
             <!-- Bottom Row: Projects -->
             <section>
-              <h3 class="text-sm font-bold uppercase tracking-widest text-white/90 mb-4 flex items-center gap-2">
+              <h2 class="text-sm font-bold uppercase tracking-widest text-white/90 mb-4 flex items-center gap-2">
                 📂 Featured Projects
-              </h3>
+              </h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div *ngFor="let proj of profile.featuredProjects" class="p-3 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors group">
                   <div class="flex justify-between items-start mb-1">
