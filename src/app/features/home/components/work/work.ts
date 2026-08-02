@@ -109,12 +109,12 @@ type Experience = {
                         {{ exp.title }}
                       </h3>
 
-                      <div class="flex items-center gap-1.5 min-w-0 text-xs md:text-sm font-semibold text-white/80 uppercase italic">
+                      <div class="flex items-center gap-1.5 min-w-0 text-xs md:text-sm font-semibold text-white/90 uppercase italic">
                         <a
                           *ngIf="exp.link; else companyNameOnly"
                           [href]="exp.link"
                           target="_blank"
-                          class="min-w-0 inline-flex items-center gap-1.5 text-white/80 hover:text-blue-300 transition-colors"
+                          class="min-w-0 inline-flex items-center gap-1.5 text-white/90 hover:text-cyan-100 transition-colors"
                         >
                           <span class="truncate">{{ exp.company }}</span>
                           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -136,21 +136,21 @@ type Experience = {
                   </div>
 
                   <div class="relative z-10 mb-2 md:mb-2.5 rounded-xl border border-white/10 bg-white/[0.045] px-2.5 py-1.5 md:px-3 md:py-2 shadow-inner shadow-white/5">
-                    <div class="flex items-center gap-2 sm:gap-3 text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-white/55">
+                    <div class="flex items-center gap-2 sm:gap-3 text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-white/80">
                       <span class="shrink-0">Role Snapshot</span>
                       <span class="h-px flex-1 bg-white/10"></span>
                       <span class="shrink-0">{{ exp.period }}</span>
                     </div>
                   </div>
 
-                  <p class="relative z-10 text-xs md:text-sm leading-relaxed font-medium text-white/85">
+                  <p class="relative z-10 text-xs md:text-sm leading-relaxed font-medium text-white">
                     {{ exp.summary }}
                   </p>
 
                   <div class="relative z-10 mt-3 flex items-center justify-end">
                     <button
                       type="button"
-                      class="inline-flex items-center gap-2 rounded-full border border-cyan-100/20 bg-cyan-200/10 px-2.5 py-1 text-[9px] md:text-[10px] font-black uppercase tracking-[0.22em] text-cyan-50 transition-all hover:border-cyan-100/35 hover:bg-cyan-200/15"
+                      class="inline-flex items-center gap-2 rounded-full border border-cyan-100/65 bg-gradient-to-r from-slate-800/30 to-cyan-500/20 px-3 py-1.5 text-[10px] md:text-[11px] font-black uppercase tracking-[0.18em] text-white backdrop-blur-md ring-1 ring-inset ring-cyan-100/20 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] transition-all hover:border-cyan-50 hover:from-slate-800/40 hover:to-cyan-500/30"
                       (click)="openExperience(i)"
                       [attr.aria-expanded]="selectedExperienceIndex === i"
                       [attr.aria-controls]="'experience-detail-panel'"
@@ -178,20 +178,20 @@ type Experience = {
 
           <div class="relative z-10 flex items-start justify-between gap-4">
             <div class="min-w-0">
-              <p class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.24em] text-cyan-100/65 mb-2">
+              <p class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.24em] text-cyan-100 mb-2">
                 Detailed Role View
               </p>
               <h3 class="text-xl md:text-2xl font-black uppercase tracking-tight text-white leading-tight">
                 {{ active.title }}
               </h3>
-              <p class="mt-1 text-sm md:text-base font-semibold text-white/72 uppercase italic">
+              <p class="mt-1 text-sm md:text-base font-semibold text-white/90 uppercase italic">
                 {{ active.company }}
               </p>
             </div>
 
             <button
               type="button"
-              class="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white/80 transition-colors hover:bg-white/14 hover:text-white"
+              class="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white/95 transition-colors hover:bg-white/14 hover:text-white"
               (click)="closeExperience()"
               aria-label="Close experience details"
             >
@@ -199,26 +199,26 @@ type Experience = {
             </button>
           </div>
 
-          <div class="relative z-10 mt-4 flex flex-wrap items-center gap-2 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-white/60">
+          <div class="relative z-10 mt-4 flex flex-wrap items-center gap-2 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-white/85">
             <span class="rounded-full border border-white/12 bg-white/8 px-3 py-1.5">{{ active.period }}</span>
-            <span *ngIf="active.impact" class="rounded-full border border-cyan-100/18 bg-cyan-200/10 px-3 py-1.5 text-cyan-50/85">
+            <span *ngIf="active.impact" class="rounded-full border border-cyan-100/18 bg-cyan-200/10 px-3 py-1.5 text-cyan-50">
               {{ active.impact }}
             </span>
           </div>
 
           <div class="relative z-10 mt-5 rounded-[1.25rem] border border-white/10 bg-slate-950/20 p-4">
-            <div class="flex items-center gap-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.22em] text-white/58 mb-2">
+            <div class="flex items-center gap-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.22em] text-white/80 mb-2">
               <span>Role Overview</span>
               <span class="h-px flex-1 bg-white/10"></span>
             </div>
-            <p class="text-sm md:text-base leading-relaxed text-white/84">
+            <p class="text-sm md:text-base leading-relaxed text-white">
               {{ active.description }}
             </p>
           </div>
 
           <div class="relative z-10 mt-4 grid grid-cols-1 gap-4">
             <div class="rounded-[1.25rem] border border-white/10 bg-white/[0.045] p-4">
-              <div class="flex items-center gap-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.22em] text-white/58 mb-3">
+              <div class="flex items-center gap-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.22em] text-white/80 mb-3">
                 <span>Tech Stack</span>
                 <span class="h-px flex-1 bg-white/10"></span>
               </div>
@@ -226,7 +226,7 @@ type Experience = {
               <div class="flex flex-wrap gap-2">
                 <span
                   *ngFor="let tech of active.techStack"
-                  class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] md:text-xs font-semibold text-white/90 transition-colors hover:bg-white/10"
+                  class="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-2.5 py-1 text-[11px] md:text-xs font-semibold text-white transition-colors hover:bg-white/10"
                 >
                   <svg class="shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><!--  [style.color]="getTechColor(tech)" -->
                     <path [attr.d]="getTechIconPath(tech)"></path>
@@ -237,7 +237,7 @@ type Experience = {
             </div>
 
             <div class="rounded-[1.25rem] border border-white/10 bg-white/[0.045] p-4">
-              <div class="flex items-center gap-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.22em] text-white/58 mb-3">
+              <div class="flex items-center gap-2 text-[10px] md:text-[11px] font-black uppercase tracking-[0.22em] text-white/80 mb-3">
                 <span>Highlights</span>
                 <span class="h-px flex-1 bg-white/10"></span>
               </div>
@@ -245,7 +245,7 @@ type Experience = {
               <div class="grid gap-2.5">
                 <div
                   *ngFor="let bullet of active.detailBullets"
-                  class="rounded-2xl border border-white/8 bg-white/[0.04] px-3 py-2.5 text-xs md:text-sm leading-relaxed text-white/82"
+                  class="rounded-2xl border border-white/12 bg-white/[0.04] px-3 py-2.5 text-xs md:text-sm leading-relaxed text-white/95"
                 >
                   {{ bullet }}
                 </div>
