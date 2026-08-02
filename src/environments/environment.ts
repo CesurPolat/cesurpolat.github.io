@@ -37,13 +37,13 @@ export const environment = {
         name: 'MiBudsClient', 
         link: 'https://github.com/CesurPolat/MiBudsClient', 
         tech: 'Python', 
-        techClass: 'bg-blue-600/45 text-blue-100', 
+        techClass: 'bg-[#3776AB] text-white', 
         desc: 'A Python & Flet-based desktop client for Redmi Buds 6 Play. Features real-time battery tracking and low-latency mode via Bluetooth.' 
       },
       { name: 'VectorMark', 
         link: 'https://github.com/CesurPolat/VectorMark', 
         tech: 'TypeScript', 
-        techClass: 'bg-sky-600/45 text-sky-100', 
+        techClass: 'bg-[#3178C6] text-white', 
         desc: 'Smart bookmark manager that automatically categorizes and organizes your saved websites using semantic search.' 
       }
     ],
