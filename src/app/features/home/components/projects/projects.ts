@@ -43,9 +43,9 @@ import { environment } from '../../../../../environments/environment';
                   <h3 class="text-lg md:text-xl font-black uppercase mb-1.5 drop-shadow-lg text-white">{{ project.name }}</h3>
                   <p class="text-xs md:text-sm font-medium mb-2 text-white/90 line-clamp-2 md:line-clamp-3 group-hover:line-clamp-none transition-all">{{ project.description }}</p>
 
-                  <div class="flex flex-wrap gap-1 mt-1">
+                  <div class="flex flex-wrap gap-1.5 md:gap-2 mt-1.5">
                     <span *ngFor="let tech of project.technologies"
-                          class="text-[9px] md:text-[10px] font-black px-1.5 py-0.5 bg-white/10 border border-white/30 uppercase tracking-tighter rounded">
+                          class="text-[9px] md:text-[10px] font-black px-2 py-0.5 bg-white/10 border border-white/30 uppercase tracking-wide rounded">
                       {{ tech }}
                     </span>
                   </div>
