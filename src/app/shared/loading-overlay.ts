@@ -30,7 +30,6 @@ import { Component, input } from '@angular/core';
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       transform: translateY(0);
-      opacity: 1;
     }
 
     .loading-overlay.is-exiting {
@@ -42,7 +41,6 @@ import { Component, input } from '@angular/core';
       position: absolute;
       inset: -20%;
       z-index: 0;
-      filter: saturate(118%);
       background:
         conic-gradient(from 220deg at 50% 50%, rgba(110, 180, 255, 0.46), rgba(70, 225, 255, 0.36), rgba(104, 255, 210, 0.34), rgba(84, 146, 255, 0.4), rgba(110, 180, 255, 0.46)),
         radial-gradient(54% 46% at 20% 18%, rgba(58, 210, 255, 0.58), transparent 72%),
@@ -50,9 +48,8 @@ import { Component, input } from '@angular/core';
         radial-gradient(50% 42% at 72% 82%, rgba(56, 178, 255, 0.46), transparent 74%),
         radial-gradient(40% 34% at 28% 78%, rgba(88, 255, 188, 0.42), transparent 72%),
         linear-gradient(145deg, #dcebff 0%, #c7ddff 52%, #b9d3ff 100%);
-      background-size: 170% 170%, 176% 176%, 186% 186%, 178% 178%, 172% 172%, 150% 150%;
-      will-change: transform, filter, background-position;
-      animation: modernMorph 17s linear infinite, modernFlow 11s linear infinite, hueCycle 24s linear infinite;
+      will-change: transform;
+      animation: modernMorph 17s linear infinite;
     }
 
     .animated-bg::before,
@@ -88,7 +85,6 @@ import { Component, input } from '@angular/core';
       min-height: 210px;
       width: min(72vw, 290px);
       aspect-ratio: 1 / 1;
-      margin: 0;
       padding: 1.1rem 0.95rem;
       border-radius: 1.6rem;
       overflow: hidden;
@@ -98,7 +94,6 @@ import { Component, input } from '@angular/core';
       justify-content: center;
       gap: 0.6rem;
       text-align: center;
-      border: none;
       background:
         linear-gradient(160deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.24) 42%, rgba(255, 255, 255, 0.12) 100%),
         rgba(201, 223, 255, 0.14);
@@ -155,14 +150,12 @@ import { Component, input } from '@angular/core';
       font-weight: 600;
       letter-spacing: 0.03em;
       font-size: 1rem;
-      text-align: center;
     }
 
     .loading-subtitle {
       margin: 0;
       color: rgba(50, 86, 134, 0.84);
       font-size: 0.82rem;
-      text-align: center;
     }
 
     @media (max-width: 640px) {
@@ -198,30 +191,6 @@ import { Component, input } from '@angular/core';
       }
       100% {
         transform: translate3d(-2%, -2%, 0) scale(1.02);
-      }
-    }
-
-    @keyframes modernFlow {
-      0% {
-        background-position: 12% 10%, 86% 16%, 24% 92%, 76% 84%, 16% 72%, 50% 50%;
-      }
-      50% {
-        background-position: 56% 34%, 36% 72%, 74% 24%, 24% 18%, 68% 22%, 58% 42%;
-      }
-      100% {
-        background-position: 12% 10%, 86% 16%, 24% 92%, 76% 84%, 16% 72%, 50% 50%;
-      }
-    }
-
-    @keyframes hueCycle {
-      0% {
-        filter: hue-rotate(0deg) saturate(116%);
-      }
-      50% {
-        filter: hue-rotate(180deg) saturate(132%);
-      }
-      100% {
-        filter: hue-rotate(360deg) saturate(116%);
       }
     }
 

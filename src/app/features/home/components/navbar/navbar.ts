@@ -44,6 +44,7 @@ export class NavbarComponent implements AfterViewInit {
   private pendingTargetId: string | null = null;
   private pendingTargetScrollTop: number | null = null;
   private restoreSyncTimeoutId: number | null = null;
+  private indicatorFrameId: number | null = null;
 
   ngAfterViewInit(): void {
     const sections = this.getSections();
@@ -83,6 +84,7 @@ export class NavbarComponent implements AfterViewInit {
       window.removeEventListener('resize', this.handleResize);
       window.removeEventListener('pageshow', this.handlePageShow);
       this.clearRestoreSyncTimeout();
+      this.cancelIndicatorFrame();
       this.observer?.disconnect();
       this.observer = null;
     });
@@ -191,7 +193,12 @@ export class NavbarComponent implements AfterViewInit {
   };
 
   private updateIndicatorPosition(): void {
-    window.requestAnimationFrame(() => {
+    if (this.indicatorFrameId !== null) {
+      return;
+    }
+
+    this.indicatorFrameId = window.requestAnimationFrame(() => {
+      this.indicatorFrameId = null;
       const navbarEl = this.navbar?.nativeElement;
       const activeButton = this.navButtons
         ?.toArray()
@@ -202,11 +209,25 @@ export class NavbarComponent implements AfterViewInit {
       }
 
       const buttonEl = activeButton.nativeElement;
-      navbarEl.style.setProperty('--indicator-x', `${buttonEl.offsetLeft}px`);
-      navbarEl.style.setProperty('--indicator-y', `${buttonEl.offsetTop}px`);
-      navbarEl.style.setProperty('--indicator-width', `${buttonEl.offsetWidth}px`);
-      navbarEl.style.setProperty('--indicator-height', `${buttonEl.offsetHeight}px`);
+      // Read every layout value before changing styles. Interleaving reads and
+      // writes here forces the browser to synchronously recalculate layout.
+      const indicatorX = buttonEl.offsetLeft;
+      const indicatorY = buttonEl.offsetTop;
+      const indicatorWidth = buttonEl.offsetWidth;
+      const indicatorHeight = buttonEl.offsetHeight;
+
+      navbarEl.style.setProperty('--indicator-x', `${indicatorX}px`);
+      navbarEl.style.setProperty('--indicator-y', `${indicatorY}px`);
+      navbarEl.style.setProperty('--indicator-width', `${indicatorWidth}px`);
+      navbarEl.style.setProperty('--indicator-height', `${indicatorHeight}px`);
     });
+  }
+
+  private cancelIndicatorFrame(): void {
+    if (this.indicatorFrameId !== null) {
+      window.cancelAnimationFrame(this.indicatorFrameId);
+      this.indicatorFrameId = null;
+    }
   }
 
   private syncActiveFromScroll(): void {
