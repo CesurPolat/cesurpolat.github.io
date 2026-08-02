@@ -28,7 +28,7 @@ gsap.registerPlugin(ScrollTrigger);
   styleUrl: './home.css'
 })
 export class HomeComponent implements AfterViewInit {
-  @ViewChild('container') container!: ElementRef<HTMLDivElement>;
+  @ViewChild('container') container!: ElementRef<HTMLElement>;
 
   private readonly loadingState = inject(LoadingStateService);
   private readonly destroyRef = inject(DestroyRef);
