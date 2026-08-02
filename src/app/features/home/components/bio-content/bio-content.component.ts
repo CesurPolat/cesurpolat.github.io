@@ -16,7 +16,7 @@ import { environment } from '../../../../../environments/environment';
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div>
                 <h1 class="text-3xl lg:text-4xl font-black mb-2 tracking-tight text-white">{{ profile.name }}</h1>
-                <p class="text-xs md:text-sm font-black uppercase tracking-[0.24em] text-cyan-100/80">
+                <p class="text-xs md:text-sm font-black uppercase tracking-[0.24em] text-cyan-100 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
                   {{ profile.title }}
                 </p>
               </div>
