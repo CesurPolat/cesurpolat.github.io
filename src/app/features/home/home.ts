@@ -4,13 +4,9 @@ import { BioContentComponent } from './components/bio-content/bio-content.compon
 import { WorkComponent } from './components/work/work';
 import { EducationComponent } from './components/education/education';
 import { ProjectsComponent } from './components/projects/projects';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ProfileCardComponent } from './components/profile-card/profile-card';
 import { LoadingStateService } from '../../shared/loading-state.service';
 import { NavbarComponent } from './components/navbar/navbar';
-
-gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-home',
@@ -38,6 +34,7 @@ export class HomeComponent implements AfterViewInit {
   private hintStartTimerId: number | null = null;
   private hasShownScrollHint = false;
   private hintStartScrollY = 0;
+  private gsapLoadPromise: Promise<void> | null = null;
 
   readonly showScrollHint = signal(false);
 
@@ -54,7 +51,7 @@ export class HomeComponent implements AfterViewInit {
   });
 
   ngAfterViewInit() {
-    this.initGSAP();
+    this.scheduleGSAPLoad();
     this.trackInitialLoad();
   }
 
@@ -85,6 +82,7 @@ export class HomeComponent implements AfterViewInit {
       this.clearLoadingTimeout();
       this.clearHintTimers();
       this.detachHintDismissListeners();
+      this.removeGSAPLoadListeners();
       this.runCleanupCallbacks();
       this.loadingState.finishLoading();
     });
@@ -161,8 +159,26 @@ export class HomeComponent implements AfterViewInit {
     this.clearLoadingTimeout();
     this.runCleanupCallbacks();
     this.loadingState.finishLoading();
-    ScrollTrigger.refresh();
   }
+
+  // Scroll snapping and the mobile fade are enhancements, so keep GSAP off the
+  // critical path until the visitor indicates they are about to navigate.
+  private scheduleGSAPLoad(): void {
+    window.addEventListener('wheel', this.loadGSAPOnInteraction, { passive: true, once: true });
+    window.addEventListener('touchstart', this.loadGSAPOnInteraction, { passive: true, once: true });
+    window.addEventListener('keydown', this.loadGSAPOnInteraction, { once: true });
+  }
+
+  private removeGSAPLoadListeners(): void {
+    window.removeEventListener('wheel', this.loadGSAPOnInteraction);
+    window.removeEventListener('touchstart', this.loadGSAPOnInteraction);
+    window.removeEventListener('keydown', this.loadGSAPOnInteraction);
+  }
+
+  private readonly loadGSAPOnInteraction = (): void => {
+    this.removeGSAPLoadListeners();
+    this.gsapLoadPromise ??= this.initGSAP();
+  };
 
   private clearLoadingTimeout(): void {
     if (this.loadingTimeoutId !== null) {
@@ -272,7 +288,13 @@ export class HomeComponent implements AfterViewInit {
     });
   }
 
-  private initGSAP() {
+  private async initGSAP(): Promise<void> {
+    const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+      import('gsap'),
+      import('gsap/ScrollTrigger')
+    ]);
+
+    gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
 
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

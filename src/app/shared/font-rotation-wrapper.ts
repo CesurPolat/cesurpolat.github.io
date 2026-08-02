@@ -1,8 +1,4 @@
 import { Component, Input, OnInit, OnDestroy, signal, computed, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import gsap from 'gsap';
-import { TextPlugin } from 'gsap/TextPlugin';
-
-gsap.registerPlugin(TextPlugin);
 
 @Component({
   selector: 'app-font-rotation-wrapper',
@@ -38,7 +34,8 @@ export class FontRotationWrapperComponent implements OnInit, OnDestroy, AfterVie
   private fontIndex = signal(0);
   currentFont = computed(() => this.fonts[this.fontIndex()]);
   private fontIntervalId: any;
-  private textAnimationIntervalId: any;
+  private visibilityObserver: IntersectionObserver | null = null;
+  private animationStarted = false;
   private originalText: string = '';
 
   ngOnInit() {
@@ -48,7 +45,7 @@ export class FontRotationWrapperComponent implements OnInit, OnDestroy, AfterVie
   ngAfterViewInit() {
     if (this.enableTextAnimation && this.textElement) {
       this.originalText = this.textElement.nativeElement.innerText;
-      this.startTextAnimation();
+      this.startTextAnimationWhenVisible();
     }
   }
 
@@ -56,9 +53,8 @@ export class FontRotationWrapperComponent implements OnInit, OnDestroy, AfterVie
     if (this.fontIntervalId) {
       clearInterval(this.fontIntervalId);
     }
-    if (this.textAnimationIntervalId) {
-      clearInterval(this.textAnimationIntervalId);
-    }
+    this.visibilityObserver?.disconnect();
+    this.visibilityObserver = null;
   }
 
   startFontRotation() {
@@ -68,7 +64,28 @@ export class FontRotationWrapperComponent implements OnInit, OnDestroy, AfterVie
     }, this.interval);
   }
 
-  startTextAnimation() {
+  private startTextAnimationWhenVisible(): void {
+    this.visibilityObserver = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting) || this.animationStarted) {
+        return;
+      }
+
+      this.animationStarted = true;
+      this.visibilityObserver?.disconnect();
+      this.visibilityObserver = null;
+      void this.startTextAnimation();
+    }, { rootMargin: '200px' });
+
+    this.visibilityObserver.observe(this.textElement.nativeElement);
+  }
+
+  private async startTextAnimation(): Promise<void> {
+    const [{ default: gsap }, { TextPlugin }] = await Promise.all([
+      import('gsap'),
+      import('gsap/TextPlugin')
+    ]);
+
+    gsap.registerPlugin(TextPlugin);
     const tl = gsap.timeline({ repeat: -1 });
 
     // Başlangıçta metni temizle
