@@ -1,5 +1,62 @@
 @import "tailwindcss";
 
+@media (min-width: 2240px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 3200px) {
+  html {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 3840px) {
+  html {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 4480px) {
+  html {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 5120px) {
+  html {
+    font-size: 48px;
+  }
+}
+
+/* Fixed-size utility text participates in the responsive root type scale. */
+.text-\[8px\] {
+  font-size: 0.5rem;
+}
+
+.text-\[9px\] {
+  font-size: 0.5625rem;
+}
+
+.text-\[10px\] {
+  font-size: 0.625rem;
+}
+
+.text-\[11px\] {
+  font-size: 0.6875rem;
+}
+
+.text-\[15px\] {
+  font-size: 0.9375rem;
+}
+
 @layer utilities {
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
