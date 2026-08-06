@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, OnDestroy, signal, computed, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Input, OnInit, OnDestroy, signal, computed, ViewChild, ElementRef, AfterViewInit, inject, PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-font-rotation-wrapper',
@@ -37,12 +38,15 @@ export class FontRotationWrapperComponent implements OnInit, OnDestroy, AfterVie
   private visibilityObserver: IntersectionObserver | null = null;
   private animationStarted = false;
   private originalText: string = '';
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   ngOnInit() {
+    if (!this.isBrowser) return;
     this.startFontRotation();
   }
 
   ngAfterViewInit() {
+    if (!this.isBrowser) return;
     if (this.enableTextAnimation && this.textElement) {
       this.originalText = this.textElement.nativeElement.innerText;
       this.startTextAnimationWhenVisible();

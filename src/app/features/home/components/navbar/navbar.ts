@@ -1,9 +1,10 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   Component,
   DestroyRef,
   ElementRef,
+  PLATFORM_ID,
   QueryList,
   ViewChild,
   ViewChildren,
@@ -40,6 +41,7 @@ export class NavbarComponent implements AfterViewInit {
   protected readonly indicatorItemId = signal(this.navItems[0].id);
 
   private readonly destroyRef = inject(DestroyRef);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private observer: IntersectionObserver | null = null;
   private pendingTargetId: string | null = null;
   private pendingTargetScrollTop: number | null = null;
@@ -47,6 +49,10 @@ export class NavbarComponent implements AfterViewInit {
   private indicatorFrameId: number | null = null;
 
   ngAfterViewInit(): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
     const sections = this.getSections();
 
     if (!sections.length) {

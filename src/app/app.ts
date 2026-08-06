@@ -1,4 +1,5 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, effect, inject, PLATFORM_ID, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LoadingOverlayComponent } from './shared/loading-overlay';
 import { LoadingStateService } from './shared/loading-state.service';
@@ -14,6 +15,7 @@ import { AnalyticsService } from './shared/analytics.service';
 export class App {
   private readonly loadingState = inject(LoadingStateService);
   private readonly analytics = inject(AnalyticsService);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private overlayExitTimerId: number | null = null;
 
   constructor() {
@@ -28,6 +30,10 @@ export class App {
   readonly isLoading = this.loadingState.isLoading;
 
   private readonly syncOverlayState = effect(() => {
+    if (!this.isBrowser) {
+      return;
+    }
+
     if (this.isLoading()) {
       this.clearOverlayExitTimer();
       this.isOverlayVisible.set(true);

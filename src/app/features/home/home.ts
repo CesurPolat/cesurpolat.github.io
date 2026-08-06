@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, DestroyRef, ElementRef, ViewChild, effect, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, AfterViewInit, DestroyRef, ElementRef, PLATFORM_ID, ViewChild, effect, inject, signal } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { BioContentComponent } from './components/bio-content/bio-content.component';
 import { WorkComponent } from './components/work/work';
 import { EducationComponent } from './components/education/education';
@@ -28,6 +28,7 @@ export class HomeComponent implements AfterViewInit {
 
   private readonly loadingState = inject(LoadingStateService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly cleanupCallbacks: Array<() => void> = [];
   private loadingCompleted = false;
   private loadingTimeoutId: number | null = null;
@@ -39,6 +40,10 @@ export class HomeComponent implements AfterViewInit {
   readonly showScrollHint = signal(false);
 
   private readonly syncScrollHintVisibility = effect(() => {
+    if (!this.isBrowser) {
+      return;
+    }
+
     if (this.loadingState.isLoading()) {
       this.clearHintTimers();
       this.detachHintDismissListeners();
@@ -51,6 +56,10 @@ export class HomeComponent implements AfterViewInit {
   });
 
   ngAfterViewInit() {
+    if (!this.isBrowser) {
+      return;
+    }
+
     this.scheduleGSAPLoad();
     this.trackInitialLoad();
   }

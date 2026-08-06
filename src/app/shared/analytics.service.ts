@@ -1,4 +1,5 @@
-import { Injectable, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -11,8 +12,13 @@ declare global {
 @Injectable({ providedIn: 'root' })
 export class AnalyticsService {
   private readonly router = inject(Router);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   init(measurementId: string): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
     if (!measurementId) {
       console.warn('Analytics: Measurement ID not provided');
       return;
@@ -36,10 +42,12 @@ export class AnalyticsService {
     eventName: string,
     params: Record<string, any> = {}
   ): void {
+    if (!this.isBrowser) return;
     window.gtag?.('event', eventName, params);
   }
 
   setUserId(userId: string): void {
+    if (!this.isBrowser) return;
     window.gtag?.('config', { 'user_id': userId });
   }
 }
