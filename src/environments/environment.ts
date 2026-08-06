@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   profile: {
-    name: 'Cesur POLAT',
+    name: 'Cesur Polat',
     title: 'Full-Stack Developer',
     email: 'cesur.polat@cesurpolat.dev',
     linkedin: 'https://linkedin.com/in/cesurpolat',
