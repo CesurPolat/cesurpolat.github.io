@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { FontRotationWrapperComponent } from '../../../../shared/font-rotation-wrapper';
 import { GlassWrapperComponent } from '../../../../shared/glass-wrapper';
-import { environment } from '../../../../../environments/environment';
+import { PROJECTS } from '../../../../data/projects';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, FontRotationWrapperComponent, GlassWrapperComponent],
+  imports: [CommonModule, RouterLink, FontRotationWrapperComponent, GlassWrapperComponent],
   template: `
     <app-glass-wrapper panelClass="h-[67vh] bg-transparent backdrop-blur-[25px] p-3 md:p-4 rounded-2xl border border-white/10 shadow-2xl overflow-hidden max-h-[85vh] w-full max-w-none">
       <div class="w-full h-full overflow-hidden flex flex-col min-h-0 text-white">
@@ -40,7 +41,11 @@ import { environment } from '../../../../../environments/environment';
                 </div>
 
                 <div class="mt-auto">
-                  <h3 class="text-lg md:text-xl font-black uppercase mb-1.5 drop-shadow-lg text-white">{{ project.name }}</h3>
+                  <h3 class="text-lg md:text-xl font-black uppercase mb-1.5 drop-shadow-lg text-white">
+                    <a [routerLink]="['/projects', project.slug]" class="underline underline-offset-4 decoration-cyan-200/60 hover:text-cyan-100">
+                      {{ project.name }}
+                    </a>
+                  </h3>
                   <p class="text-xs md:text-sm font-medium mb-2 text-white/90 line-clamp-2 md:line-clamp-3 group-hover:line-clamp-none transition-all">{{ project.description }}</p>
 
                   <div class="flex flex-wrap gap-1.5 md:gap-2 mt-1.5">
@@ -49,6 +54,9 @@ import { environment } from '../../../../../environments/environment';
                       {{ tech }}
                     </span>
                   </div>
+                  <a [routerLink]="['/projects', project.slug]" class="inline-flex items-center gap-1 mt-2.5 text-[10px] md:text-xs font-black uppercase tracking-wide text-cyan-100 hover:text-white">
+                    View project <span aria-hidden="true">→</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -61,5 +69,5 @@ import { environment } from '../../../../../environments/environment';
   `
 })
 export class ProjectsComponent {
-  projects = environment.projects;
+  projects = PROJECTS;
 }

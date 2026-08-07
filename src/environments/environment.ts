@@ -95,44 +95,6 @@ export const environment = {
       ]
     }
   ],
-  projects: [
-    {
-      name: 'MiBudsClient',
-      description: 'Desktop client for Redmi Buds 6 Play. Battery tracking & low-latency mode.',
-      technologies: ['Python', 'Flet', 'Bluetooth'],
-      link: 'https://github.com/CesurPolat/MiBudsClient',
-      bgColor: '#1a1a1a',
-      bgImage: '/images/projects/mibuds.webp',
-      logo: "/images/projects/MiBudsClientIcon.webp"
-    },
-    {
-      name: 'VectorMark',
-      description: 'Smart bookmark manager that automatically categorizes and organizes your saved websites using semantic search.',
-      technologies: ['Browser Extension', 'TypeScript', 'Vector Databases'],
-      link: 'https://github.com/CesurPolat/VectorMark',
-      bgColor: '#1a1a1a',
-      bgImage: '/images/projects/banner.webp',
-      logo: "/images/projects/VectorMarkIcon-46x46.webp"
-    },
-    {
-      name: 'Termoware',
-      description: 'Selection and quotation portal for leading industry companies in HVAC.',
-      technologies: ['ASP.NET', 'C#', 'MSSQL', 'gRPC'],
-      link: "https://primeware.com.tr/urunler",
-      bgColor: '#0984E3',
-      bgImage: '/images/projects/termoware.webp',
-      logo: "/images/logos/primeware-46x46.webp"
-    },
-    {
-      name: 'IPTV',
-      description: 'Android TV app for streaming IPTV content with user-friendly interface and reliable performance.',
-      technologies: ['Angular', '.NET Core', 'Playwright', 'Capacitor'],
-      link: "https://iptv-603b2.web.app/#/home",
-      bgColor: '#6C5CE7',
-      bgImage: '/images/projects/iptv.webp',
-      logo: null
-    }
-  ],
   experience: [
     {
       title: 'Full-Stack Developer (Full-time)',

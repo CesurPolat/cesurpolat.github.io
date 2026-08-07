@@ -10,9 +10,10 @@ Cesur Polat develops modern, scalable web applications using ASP.NET Core, Angul
 
 ## Featured Projects
 
-- [Termoware](https://primeware.com.tr/urunler): Enterprise web-based HVAC engineering platform for equipment selection, sizing, performance calculations, and project management, built with ASP.NET Core, Angular, SQL Server, and gRPC.
-- [VectorMark](https://github.com/CesurPolat/VectorMark): Local-first AI-powered bookmark manager that automatically organizes and retrieves bookmarks using semantic search, local embeddings, and vector similarity. Built as a privacy-first Chrome extension with VecLite, IndexedDB, and HNSW indexing.
-- [MiBudsClient](https://github.com/CesurPolat/MiBudsClient): Open-source desktop application for Redmi Buds 6 Play, providing real-time battery monitoring, Bluetooth device management, low-latency mode control, and automatic device detection. Built with Python and Flet.
+- [MiBudsClient](https://cesurpolat.dev/projects/mibuds-client): Open-source Python and Flet desktop client for Redmi Buds 6 Play with battery monitoring, Bluetooth device management, and low-latency controls.
+- [VectorMark](https://cesurpolat.dev/projects/vectormark): Local-first TypeScript bookmark manager using IndexedDB, local embeddings, HNSW indexing, and semantic vector search.
+- [Termoware](https://cesurpolat.dev/projects/termoware): Cesur Polat's engineering contributions to an enterprise HVAC selection and quotation platform, including optimized calculation services and gRPC-based architecture work.
+- [IPTV](https://cesurpolat.dev/projects/iptv): Android TV streaming application built with Angular, .NET Core, Capacitor, and Playwright.
 
 ## Technical Expertise
 

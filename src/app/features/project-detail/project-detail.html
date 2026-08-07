@@ -1,0 +1,84 @@
+<main class="project-page">
+  <div class="project-shell">
+    <a routerLink="/" fragment="projects-section" class="back-link" aria-label="Back to portfolio projects">
+      <span aria-hidden="true">←</span>
+      Back to portfolio
+    </a>
+
+    <article class="project-card">
+      <header class="project-header">
+        <div class="project-heading">
+          <p class="eyebrow">{{ project.eyebrow }}</p>
+          <h1>{{ project.name }}</h1>
+          <p class="project-summary">{{ project.metaDescription }}</p>
+
+          <div class="project-actions">
+            <a [href]="project.link" target="_blank" rel="noopener noreferrer" class="primary-action">
+              {{ project.linkLabel }}
+              <span aria-hidden="true">↗</span>
+            </a>
+            @if (project.sourceUrl && project.sourceUrl !== project.link) {
+              <a [href]="project.sourceUrl" target="_blank" rel="noopener noreferrer" class="secondary-action">
+                View source
+              </a>
+            }
+          </div>
+        </div>
+
+        <div class="project-visual" [style.backgroundColor]="project.bgColor">
+          <img [src]="project.bgImage" [alt]="project.name + ' project preview'">
+          <div class="visual-overlay"></div>
+          <div class="project-mark">
+            @if (project.logo) {
+              <img [src]="project.logo" [alt]="project.name + ' logo'">
+            } @else {
+              <span>{{ project.name.substring(0, 2) }}</span>
+            }
+          </div>
+        </div>
+      </header>
+
+      <div class="project-content">
+        <section class="content-section overview-section">
+          <p class="section-label">Overview</p>
+          <div class="prose">
+            @for (paragraph of project.overview; track paragraph) {
+              <p>{{ paragraph }}</p>
+            }
+          </div>
+        </section>
+
+        <section class="content-section contribution-section">
+          <p class="section-label">My contribution</p>
+          <p class="contribution-copy">{{ project.contribution }}</p>
+        </section>
+
+        <section class="content-section highlights-section">
+          <p class="section-label">Engineering highlights</p>
+          <ul>
+            @for (highlight of project.highlights; track highlight) {
+              <li>
+                <span aria-hidden="true"></span>
+                {{ highlight }}
+              </li>
+            }
+          </ul>
+        </section>
+
+        <section class="content-section stack-section">
+          <p class="section-label">Technology</p>
+          <div class="technology-list">
+            @for (technology of project.technologies; track technology) {
+              <span>{{ technology }}</span>
+            }
+          </div>
+        </section>
+      </div>
+    </article>
+
+    <footer class="project-footer">
+      <span>© 2026 Cesur Polat</span>
+      <a routerLink="/" fragment="projects-section">Explore other projects</a>
+    </footer>
+  </div>
+</main>

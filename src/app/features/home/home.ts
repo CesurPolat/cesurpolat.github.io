@@ -7,6 +7,7 @@ import { ProjectsComponent } from './components/projects/projects';
 import { ProfileCardComponent } from './components/profile-card/profile-card';
 import { LoadingStateService } from '../../shared/loading-state.service';
 import { NavbarComponent } from './components/navbar/navbar';
+import { SeoService } from '../../shared/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +28,7 @@ export class HomeComponent implements AfterViewInit {
   @ViewChild('container') container!: ElementRef<HTMLElement>;
 
   private readonly loadingState = inject(LoadingStateService);
+  private readonly seo = inject(SeoService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly cleanupCallbacks: Array<() => void> = [];
@@ -38,6 +40,10 @@ export class HomeComponent implements AfterViewInit {
   private gsapLoadPromise: Promise<void> | null = null;
 
   readonly showScrollHint = signal(false);
+
+  constructor() {
+    this.seo.setHomeMetadata();
+  }
 
   private readonly syncScrollHintVisibility = effect(() => {
     if (!this.isBrowser) {

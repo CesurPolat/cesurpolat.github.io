@@ -44,17 +44,32 @@
     gtag('config', 'G-3T0E2FXMKM', { 'send_page_view': false });
   </script>
 
-  <script type="application/ld+json">
+  <script id="structured-data" type="application/ld+json">
 {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cesurpolat.dev/#website",
+      "url": "https://cesurpolat.dev/",
+      "name": "Cesur Polat",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://cesurpolat.dev/#profile-page",
+      "url": "https://cesurpolat.dev/",
+      "name": "Cesur Polat | Full-Stack Developer",
+      "isPartOf": { "@id": "https://cesurpolat.dev/#website" },
+      "mainEntity": { "@id": "https://cesurpolat.dev/#person" }
+    },
+    {
       "@type": "Person",
       "@id": "https://cesurpolat.dev/#person",
       "name": "Cesur Polat",
       "alternateName": "CesurPolat",
       "url": "https://cesurpolat.dev/",
-      "image": {
-        "@type": "ImageObject",
-        "url": "https://cesurpolat.dev/images/profile/ProfileMemoji.webp"
-      },
+      "image": "https://cesurpolat.dev/images/profile/ProfileMemoji.webp",
       "jobTitle": "Full-Stack Developer",
       "description": "Cesur Polat is a full-stack developer in Sakarya, Türkiye, specializing in .NET, Angular, Node.js, TypeScript, APIs, and modern, scalable web apps.",
       "address": {
@@ -87,7 +102,9 @@
         "Web Application Architecture"
       ]
     }
-</script>
+  ]
+}
+  </script>
 </head>
 
 <body>
