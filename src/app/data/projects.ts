@@ -1,5 +1,6 @@
 export interface PortfolioProject {
   slug: string;
+  lastModified: string;
   name: string;
   eyebrow: string;
   description: string;
@@ -21,6 +22,7 @@ export interface PortfolioProject {
 export const PROJECTS: PortfolioProject[] = [
   {
     slug: 'mibuds-client',
+    lastModified: '2026-08-07',
     name: 'MiBudsClient',
     eyebrow: 'Open-source desktop application',
     description: 'Desktop client for Redmi Buds 6 Play with battery tracking and low-latency controls.',
@@ -48,6 +50,7 @@ export const PROJECTS: PortfolioProject[] = [
   },
   {
     slug: 'vectormark',
+    lastModified: '2026-08-07',
     name: 'VectorMark',
     eyebrow: 'Local-first browser extension',
     description: 'Local-first bookmark manager that organizes saved websites using semantic search.',
@@ -75,6 +78,7 @@ export const PROJECTS: PortfolioProject[] = [
   },
   {
     slug: 'termoware',
+    lastModified: '2026-08-07',
     name: 'Termoware',
     eyebrow: 'Enterprise HVAC engineering platform',
     description: 'HVAC selection and quotation platform with optimized engineering calculation services.',
@@ -101,6 +105,7 @@ export const PROJECTS: PortfolioProject[] = [
   },
   {
     slug: 'iptv',
+    lastModified: '2026-08-07',
     name: 'IPTV',
     eyebrow: 'Android TV streaming application',
     description: 'Android TV streaming application focused on a clear and reliable viewing experience.',
