@@ -19,8 +19,10 @@ import { PROJECTS } from '../../../../data/projects';
 
         <div class="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-1 md:pr-2 pb-1">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-3 md:h-full md:auto-rows-fr">
-              <div *ngFor="let project of projects"
-                class="group relative border border-white/15 bg-white/5 transition-all duration-300 hover:bg-white/10 hover:border-white/25 shadow-xl flex flex-col min-h-52 md:h-full overflow-hidden rounded-xl">
+              <a *ngFor="let project of projects"
+                [routerLink]="['/projects', project.slug]"
+                [attr.aria-label]="'View ' + project.name + ' project details'"
+                class="group relative border border-white/15 bg-white/5 transition-all duration-300 hover:bg-white/10 hover:border-white/25 shadow-xl flex flex-col min-h-52 md:h-full overflow-hidden rounded-xl no-underline">
 
               <div class="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                    [style.backgroundImage]="project.bgImage ? 'url(' + project.bgImage + ')' : 'none'"
@@ -35,17 +37,13 @@ import { PROJECTS } from '../../../../data/projects';
                     <span *ngIf="!project.logo" class="text-base md:text-lg font-black tracking-tighter uppercase">{{ project.name.substring(0,2) }}</span>
                   </div>
 
-                  <a *ngIf="project.link" [href]="project.link" target="_blank" [attr.aria-label]="'Open ' + project.name + ' project in a new tab'" class="p-1.5 bg-white/15 text-white hover:bg-white/25 transition-colors border border-white/30 rounded-lg backdrop-blur-sm">
+                  <span aria-hidden="true" class="p-1.5 bg-white/15 text-white group-hover:bg-white/25 transition-colors border border-white/30 rounded-lg backdrop-blur-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  </a>
+                  </span>
                 </div>
 
                 <div class="mt-auto">
-                  <h3 class="text-lg md:text-xl font-black uppercase mb-1.5 drop-shadow-lg text-white">
-                    <a [routerLink]="['/projects', project.slug]" class="underline underline-offset-4 decoration-cyan-200/60 hover:text-cyan-100">
-                      {{ project.name }}
-                    </a>
-                  </h3>
+                  <h3 class="text-lg md:text-xl font-black uppercase mb-1.5 drop-shadow-lg text-white group-hover:text-cyan-100 transition-colors">{{ project.name }}</h3>
                   <p class="text-xs md:text-sm font-medium mb-2 text-white/90 line-clamp-2 md:line-clamp-3 group-hover:line-clamp-none transition-all">{{ project.description }}</p>
 
                   <div class="flex flex-wrap gap-1.5 md:gap-2 mt-1.5">
@@ -54,12 +52,9 @@ import { PROJECTS } from '../../../../data/projects';
                       {{ tech }}
                     </span>
                   </div>
-                  <a [routerLink]="['/projects', project.slug]" class="inline-flex items-center gap-1 mt-2.5 text-[10px] md:text-xs font-black uppercase tracking-wide text-cyan-100 hover:text-white">
-                    View project <span aria-hidden="true">→</span>
-                  </a>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
